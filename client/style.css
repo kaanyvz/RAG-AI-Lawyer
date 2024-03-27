@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --main-color: #0A3D33;
+    --black-color: #121212;
+    --border: 0.1 rem solid rgba(255, 255, 255, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: 0.3s ease;
+    font-family: "Poppins", sans-serif;
+}
+
+/* base html codes(1remi 10pxe translate etmek için) */
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--main-color);
+}
+
+section {
+    padding: 3.5rem 7%;
+
+}
+
+.btn {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1.5rem 2.75rem;
+    border-radius: 30rem;
+    font-size: 1.7rem;
+    color: var(--main-color);
+    background-color: #F4F3F0;
+}
+
+.btn:hover {
+    background-color: #F4F3F0;
+    border-radius: 30rem;
+    scale: 1.1;
+}
+
+.heading{
+    color: #F4F3F0;
+    padding: 1rem;
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    margin-top: -2rem;
+    border-bottom: 0.3rem solid #F4F3F0;
+    
+}
+
+
+/* header burada başlıyor*/
+.header .logo img {
+    height: 10rem;
+}
+
+.header {
+    background-color: #F4F3F0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    margin: 2rem 7%;
+    border-radius: 30rem;
+    box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .navbar a {
+    margin: 0 1rem;
+    font-size: 1.6rem;
+    color: var(--black-color);
+    border-bottom: 0.1rem solid transparent;
+}
+
+.header .navbar .active,
+.header .navbar a:hover {
+    border-color: var(--main-color);
+    padding-bottom: 0.5rem;
+
+
+}
+
+.header .search_button button {
+    cursor: pointer;
+    font-size: 2.5rem;
+    margin-left: 3rem;
+    background-color: transparent;
+}
+
+/* header burada bitiyor */
+
+/* main burada başlıyor */
+.main {
+    min-height: 100vh;
+    background: url(../project/images/main.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-top: -14.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.main .content {
+    max-width: 60rem;
+}
+
+.main .content h3 {
+    font-size: 3rem;
+    color: #F4F3F0;
+}
+
+.main .content h3 span {
+    font-size: 2.5rem;
+}
+
+/* main burada bitiyor */
+
+/* main_içerik burada başlıyor */
+
+.main_içerik {
+    background-color: #F4F3F0;
+    padding-top: 11rem;
+    padding-bottom: 15rem;
+
+}
+
+.main_içerik h4 {
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 1.8;
+    padding: 1rem 0;
+    color: #121212;
+    text-shadow: -0.1rem 0 black, 0 0.1rem black, 0.1rem 0 black, 0 -0.1rem black;
+    text-transform: uppercase;
+}
+
+.main_içerik p {
+    font-size: 2rem;
+    font-weight: 200;
+    line-height: 1.8;
+    padding: 1rem 0;
+    color: #121212;
+    text-align: justify;
+}
+
+.main_içerik p a {
+    color: #121212;
+    font-weight: 400;
+    border-bottom: 0.1rem solid transparent;
+}
+
+.main_içerik p a:hover {
+    color: #F4F3F0;
+    background-color: #0A3D33;
+    border-radius: 2rem;
+    scale: 1.1;
+}
+
+.main_içerik p span {
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 1.8;
+    padding: 1rem 0;
+    color: #121212;
+}
+
+/* main_içerik burada bitiyor */
+
+/* main_avukatlar burada başlıyor */
+.main_avukatlar {
+    text-align: center;
+}
+
+.main_avukatlar .box_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+    
+}
+
+.main_avukatlar .box_container .box {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color: #F4F3F0;
+    border-radius: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    
+
+}
+
+.main_avukatlar .box_container .box img {
+    width: 100%;
+    object-fit: cover;
+    padding-bottom: 0.5rem;
+    
+}
+
+.main_avukatlar .box_container .box .menu-category {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.main_avukatlar .box_container .box h3 {
+    font-size: 3rem;
+    padding: 1rem;
+}
+
+.main_avukatlar .box_container .box .içerik {
+    font-size: 1.5rem;
+    padding: 0.5rem 0;
+}
+
+.main_avukatlar .box_container .box .içerik .main_avukatlar_btn{
+    color: #0A3D33;
+    font-weight: 700;
+}
+
+.main_avukatlar .box_container .box .içerik .main_avukatlar_btn:hover{
+    text-decoration: underline;
+    
+}
+
+
+
+
+/* main_avukatlar burada bitiyor */
