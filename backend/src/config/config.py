@@ -24,9 +24,9 @@ class StreamlitConfiguration(BaseModel):
 
 
 class Configurations(BaseSettings):
-    openai_configuration: OpenAIConfiguration
-    pinecone_configuration: PineconeConfiguration
-    streamlit_configuration: StreamlitConfiguration
+    openai__api_key: str
+    pinecone__api_key: str
+    streamlit__api_key: str
 
     class Config:
         env_file = ROOT_DIRECTORY / ".env"
