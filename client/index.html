@@ -8,6 +8,7 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Avukatlık Acenta</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,16 +16,17 @@
 <body>
     <!-- header burada başlıyor-->
     <header class="header">
-        <a href="#" class="logo">
+        <a href="#main" class="logo">
             <img src="images/logo.png" alt="logo">
         </a>
         <nav class="navbar">
-            <a href="#" class="active">ANASAYFA</a>
-            <a href="#">AVUKATLARIMIZ</a>
-            <a href="#">DAVALARIMIZ</a>
-            <a href="#">MEMNUNİYET</a>
-            <a href="#">BİZE ULAŞIN</a>
-            <a href="#">CHATBOT</a>
+            <a href="#main" class="active">ANASAYFA</a>
+            <a href="#hakkimizda">HAKKIMIZDA</a>
+            <a href="#davalarimiz">DAVALARIMIZ</a>
+            <a href="#avukatlarimiz">AVUKATLARIMIZ</a>
+            <a href="#memnuniyet">MEMNUNİYET</a>
+            <a href="#contact">BİZE ULAŞIN</a>
+            <a href="chatbot.html">CHATBOT</a>
         </nav>
 
         <div class="search_button">
@@ -36,20 +38,22 @@
     <!-- header burada bitiyor-->
 
     <!-- main burada başlıyor-->
-    <section class="main">
+    <section class="main" id="main">
         <div class="content">
             <h3>Suçlanıyor musunuz? </h3>
             <h3>Gözaltına mı alındınız?</h3>
             <h3><span>En İyi Savunmayı "Siz" Hak Ediyorsunuz!</span></h3>
-            <a href="#" class="btn">Bir Avukatımızla Görüşün</a>
+            <a href="avukatlar.html" class="btn">Bir Avukatımızla Görüşün</a>
         </div>
     </section>
     <!-- main burada bitiyor-->
 
     <!-- main_içerik burada başlıyor-->
-    <section class="main_içerik">
+    <section class="main_içerik" id="hakkimizda">
+        <h1 class="heading">Biz Kimiz?</h1>
         <h4>Maltepe Üniversitesi Hukuk Bürosu</h4>
-        <p>Maltepe Üniversitesi Hukuk Bürosu olarak, Türkiye'de ilk kez sunulan <a href="#">yapay zeka</a> destekli
+        <p>Maltepe Üniversitesi Hukuk Bürosu olarak, Türkiye'de ilk kez sunulan <a href="chatbot.html">yapay zeka</a>
+            destekli
             avukatlık hizmetimizle, sizlere en iyi hukuki yardımı sağlamak için çalışıyoruz. Toplamda 10 yıldan fazla
             deneyime
             sahip uzman ekibimizle, hukuki sorunlarınıza çözüm bulmak için buradayız. Maltepe Üniversitesi Hukuk Bürosu
@@ -61,93 +65,267 @@
     </section>
     <!-- main_içerik burada bitiyor-->
 
+    <!-- main_davalar burada başlıyor-->
+    <section class="main_davalar" id="davalarimiz">
+        <h1 class="heading">Ne olursa olsun Size yardım edeceğiz.</h1>
+        <div class="box-davalar_container">
+            <a href="davalar.html">
+                <div class="box-davalar">
+                    <img src="images/aile_içi_şiddet.jpg" alt="kutu1">
+                    <p><span>Aile & Boşanma</span> <span>Hukuku</span></p>
+                </div>
+            </a>
+            <a href="davalar.html">
+                <div class="box-davalar">
+                    <img src="images/ceza_hukuku.jpg" alt="kutu1">
+                    <p><span>Ceza</span> <span>Hukuku</span></p>
+                </div>
+            </a>
+            <a href="davalar.html">
+                <div class="box-davalar">
+                    <img src="images/gayrimenkul_hukuk.jpg" alt="kutu1">
+                    <p><span>Gayrimenkul</span> <span>Hukuku</span></p>
+                </div>
+            </a>
+            <a href="davalar.html">
+                <div class="box-davalar">
+                    <img src="images/insan_hakları_hukuku.jpg" alt="kutu1">
+                    <p><span>İnsan Hakları</span> <span>Hukuku</span></p>
+                </div>
+            </a>
+            <a href="davalar.html">
+                <div class="box-davalar">
+                    <img src="images/miras-hukuku.jpg" alt="kutu1">
+                    <p><span>Miras</span> <span>Hukuku</span></p>
+                </div>
+            </a>
+            <a href="davalar.html">
+                <div class="box-davalar">
+                    <img src="images/medeni_hukuk.jpg" alt="kutu1">
+                    <p><span>Medeni</span> <span>Hukuk</span></p>
+                </div>
+            </a>
+            <a href="davalar.html">
+                <div class="box-davalar">
+                    <img src="images/şirketler_hukuku.png" alt="kutu1">
+                    <p><span>Şirketler</span> <span>Hukuku</span></p>
+                </div>
+            </a>
+            <a href="davalar.html">
+                <div class="box-davalar">
+                    <img src="images/tazminat_hukuku.jpg" alt="kutu1">
+                    <p><span>Tazminat</span> <span>Hukuku</span></p>
+                </div>
+            </a>
+        </div>
+        <p class="davalar-alert">*Uygulama alanlarımız yukarıdaki listeyle sınırlı değildir. Türk Anayasasına tamamen
+            hakim olan <a href="chatbot.html">yapay zeka</a> ile birlikte her alanda emrinizdeyiz. İnsanlara çok çeşitli
+            cezai
+            savunma davalarında
+            yardımcı oluyoruz. Özgürlüğünüzü korumaya nasıl yardımcı olabileceğimizi öğrenmek için bugün bir danışma
+            randevusu ayarlayın.</p>
+        <p class="davalar-alert">Ama öncelikle bünyemizde bulunan Avukatlarımıza bir göz atın...</p>
+
+    </section>
+
+    <!-- main_davalar burada bitiyor-->
+
     <!-- main_avukatlar burada başlıyor-->
-    <section class="main_avukatlar">
-        <h1 class="heading">Avukatlarımız</h3>
-            <div class="box_container">
-                <div class="box">
-                    <div class="box-head">
-                        <img src="images/avukat1.png" alt="avukat">
-                        <span class="menu-category">CEZA HUKUKU</span>
-                        <h3>Alperen ÖZKILIÇ</h3>
-                        <div class="içerik">Lorem ipsum dolor sit amet, consectetur adipisicing elit <a href="#"
-                                class="main_avukatlar_btn">detaylar için tıklayınız.</a></div>
+    <section class="main_avukatlar" id="avukatlarimiz">
+        <div class="pointer"></div>
+        <h1 class="heading">Sizinle her daim ilgilenecek ekip arkadaşlarımız</h1>
+        <div class="box_container">
+            <div class="box">
+                <div class="box-head">
+                    <img src="images/avukat1.png" alt="avukat">
+                    <h3>Av. Kerem Efe AKSOY</h3>
+                    <div class="içerik">
+                        <p>Kocaeli’de Aile Hukuku, Ceza Hukuku, İş Hukuku, Miras Hukuku hakkında avukatlık
+                            ve hukuki danışmanlık faaliyeti gösteren Av. Kerem Efe AKSOY, hukuki tecrübesi ve
+                            başarılarıyla
+                            İstanbul'da çalışmalarına devam etmektedir. <a href="avukatlar.html"
+                            class="main_avukatlar_btn">Daha detaylı incelemek
+                            için tıklayınız.</a></p>
                     </div>
-                </div>
-                <div class="box">
-                    <div class="box-head">
-                        <img src="images/avukat2.png" alt="avukat">
-                        <span class="menu-category">Anayasa Hukuku</span>
-                        <h3>Alperen ÖZKILIÇ</h3>
-                        <div class="içerik">Lorem ipsum dolor sit amet, consectetur adipisicing elit <a href="#"
-                                class="main_avukatlar_btn">detaylar için tıklayınız.</a></div>
-                    </div>
-
-                </div>
-                <div class="box">
-                    <div class="box-head">
-                        <img src="images/avukat3.png" alt="avukat">
-                        <span class="menu-category">VERGİ Hukuku</span>
-                        <h3>Alperen ÖZKILIÇ</h3>
-                        <div class="içerik">Lorem ipsum dolor sit amet, consectetur adipisicing elit <a href="#"
-                                class="main_avukatlar_btn">detaylar için tıklayınız.</a></div>
-                    </div>
-
-                </div>
-                <div class="box">
-                    <div class="box-head">
-                        <img src="images/avukat4.png" alt="avukat">
-                        <span class="menu-category">İŞ Hukuku</span>
-                        <h3>Alperen ÖZKILIÇ</h3>
-                        <div class="içerik">Lorem ipsum dolor sit amet, consectetur adipisicing elit <a href="#"
-                                class="main_avukatlar_btn">detaylar için tıklayınız.</a></div>
-                    </div>
-
-                </div>
-                <div class="box">
-                    <div class="box-head">
-                        <img src="images/avukat5.png" alt="avukat">
-                        <span class="menu-category">MEDENİ Hukuk</span>
-                        <h3>Alperen ÖZKILIÇ</h3>
-                        <div class="içerik">Lorem ipsum dolor sit amet, consectetur adipisicing elit <a href="#"
-                                class="main_avukatlar_btn">detaylar için tıklayınız.</a></div>
-                    </div>
-
-                </div>
-                <div class="box">
-                    <div class="box-head">
-                        <img src="images/avukat6.png" alt="avukat">
-                        <span class="menu-category">YARGILAMA Hukuku</span>
-                        <h3>Alperen ÖZKILIÇ</h3>
-                        <div class="içerik">Lorem ipsum dolor sit amet, consectetur adipisicing elit <a href="#"
-                                class="main_avukatlar_btn">detaylar için tıklayınız.</a></div>
-                    </div>
-
-                </div>
-                <div class="box">
-                    <div class="box-head">
-                        <img src="images/avukat7.png" alt="avukat">
-                        <span class="menu-category">idare Hukuku</span>
-                        <h3>Alperen ÖZKILIÇ</h3>
-                        <div class="içerik">Lorem ipsum dolor sit amet, consectetur adipisicing elit <a href="#"
-                                class="main_avukatlar_btn">detaylar için tıklayınız.</a></div>
-                    </div>
-
-                </div>
-                <div class="box">
-                    <div class="box-head">
-                        <img src="images/avukat8.png" alt="avukat">
-                        <span class="menu-category">icra Hukuku</span>
-                        <h3>Alperen ÖZKILIÇ</h3>
-                        <div class="içerik">Lorem ipsum dolor sit amet, consectetur adipisicing elit <a href="#"
-                                class="main_avukatlar_btn">detaylar için tıklayınız.</a></div>
-                    </div>
-
                 </div>
             </div>
+            <div class="box">
+                <div class="box-head">
+                    <img src="images/avukat2.png" alt="avukat">
+                    <h3>Av. Mehmet KOLUGÜÇLÜ</h3>
+                    <div class="içerik">
+                        <p>İstanbul Üniversitesi Hukuk Fakültesi mezunudur ve meslekte 10 yıldan fazla
+                            deneyime sahiptir. Hukuki alanda geniş bir tecrübeye sahip olan KOLUGÜÇLÜ, özellikle ceza
+                            hukuku
+                            ve ticaret hukuku konularında uzmanlaşmıştır. Müvekkillerine etkin ve başarılı bir şekilde
+                            hizmet vermektedir. <a href="avukatlar.html" class="main_avukatlar_btn">Daha detaylı
+                            incelemek
+                            için tıklayınız.</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-head">
+                    <img src="images/avukat3.png" alt="avukat">
+                    <h3>Av. Ayşe KAYA</h3>
+                    <div class="içerik">
+                        <p>1999 Karabük doğumlu olan Av. Ayşe KAYA, Maltepe Anadolu Lisesi'nin ardından
+                            Kırklareli Üniversitesi Hukuk Fakültesi’nden 2022 yılında mezun olmuştur.
+                            Avukatlık stajını Maltepe Üniversitesi Hukuk Bürosu’nda tamamlamıştır. Kira Hukuku, Tüketici
+                            Hukuku ve Miras Hukuku alanlarında çalışmaktadır. <a href="avukatlar.html"
+                                class="main_avukatlar_btn">Daha
+                                detaylı incelemek için tıklayınız.</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-head">
+                    <img src="images/avukat4.png" alt="avukat">
+                    <h3>Av. Demir DEMİRBÜKEN</h3>
+                    <div class="içerik"><p>1991 Erzurum doğumlu olan Av. Yusuf ÇOLAK Ondokuz Mayıs Üniversitesi Hukuk
+                        Fakültesi’nden mezun olmuştur. Yüksek Lisans tezini Avrupa İnsan Hakları Sözleşmesi üzerine
+                        yazmıştır. Eğitim hayatı ve staj süresi boyunca Aile Hukuku, İş Hukuku, İdare Hukuku, Ceza
+                        Hukuku, Sigorta Hukuku ve İcra Hukuku alanlarında uzmanlaşmıştır. <a href="avukatlar.html"
+                            class="main_avukatlar_btn">Daha detaylı incelemek için tıklayınız.</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- main_avukatlar burada bitiyor-->
 
+    <!--main_review burada başlıyor-->
+    <section class="main_review" id="memnuniyet">
+        <h1 class="heading">Müşterilerimizin Deneyimlerini Keşfedin</h1>
+        <div class="main_review_container">
+
+            <div class="contanier_left">
+                <p>Bizimle çalışan müşterilerimizin deneyimlerini öğrenmek ister misiniz?</p>
+                <p>Burada, memnuniyetle sunduğumuz hizmetlerimizi değerlendiren müşterilerimizin gerçek görüşlerini
+                    bulabilirsiniz.</p>
+                <p>Firmamız, müşteri memnuniyetini en üst düzeye çıkarmak için sürekli çaba göstermektedir. Siz değerli
+                    müşterilerimizden gelen geri bildirimler, işimizi nasıl yapabileceğimiz konusunda bize rehberlik
+                    etmektedir. Bu nedenle, müşteri deneyimlerini önemsiyor ve onları burada paylaşmayı dört gözle
+                    bekliyoruz.
+                </p>
+                <a href="review_detail.html"><button>Başarı Hikayelerimize Yakından Bakın</button></a>
+            </div>
+            <div class="container_right">
+                <div class="card">
+                    <img src="images/review_main1.jpg" alt="kullanıcı">
+                    <div class="card__content">
+                        <span><i class="ri-double-quotes-l"></i></span>
+                        <div class="card__details">
+                            <p>Harika bir deneyimdi! Profesyonel yaklaşımları ve hızlı çözümleriyle sorunlarımı
+                                çözdüler. Kesinlikle tavsiye ederim!</p>
+                            <h4>- Selami Şahinkaya</h4>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/review_main2.jpg" alt="kullanıcı">
+                    <div class="card__content">
+                        <span><i class="ri-double-quotes-l"></i></span>
+                        <div class="card__details">
+                            <p>Acentanın sağladığı hizmetten çok memnun kaldım.Yapay zeka destekli çözümleri,
+                                ihtiyaçlarınaza hızlı ve etkili bir şekilde yanıt vererek, herhangi bir avukatla
+                                doğrudan iletişim kurmadan sorunları çözme imkanı sunuyor. Teşekkür ederim!</p>
+                            <h4>- Sultan Ayşe Kahıroğlu</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/review_main3.jpg" alt="kullanıcı">
+                    <div class="card__content">
+                        <span><i class="ri-double-quotes-l"></i></span>
+                        <div class="card__details">
+                            <p>İhtiyaç duyduğum hukuki desteği bulmak için tereddüt etmiştim, ancak bu acente beni
+                                şaşırttı. Profesyonel yaklaşımları ve samimi tavırlarıyla güven veriyorlar.</p>
+                            <h4>- Yusuf Emre Dilek</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--main_review burada bitiyor-->
+
+    <!--main_contact burada başlıyor-->
+    <section class="contact" id="contact">
+        <h1 class="heading">İletişim</h1>
+        <div class="contact_container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12052.156012043335!2d29.1915376!3d40.9587244!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac5714db44911%3A0x96cd5cf807f5b40b!2sMaltepe%20%C3%9Cniversitesi%20M%C3%BChendislik%20ve%20Do%C4%9Fa%20Bilimleri%20Fak%C3%BCltesi!5e0!3m2!1str!2str!4v1712238334809!5m2!1str!2str"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
+                <input type="hidden" name="access_key" value="aec75ba8-2441-4a27-84d0-5a7e9977120c">
+                <div class="contact1">
+                    <input type="text" name="first-name" maxlength="20" placeholder="İsim" class="contact-inputs"
+                        required required oninput="this.value = this.value.replace(/[^a-zA-ZğüşıöçĞÜŞİÖÇ\s]/g, '');">
+                    <input type="text" name="last-name" maxlength="20" placeholder="Soyisim" class="contact-inputs"
+                        required required oninput="this.value = this.value.replace(/[^a-zA-ZğüşıöçĞÜŞİÖÇ\s]/g, '');">
+                </div>
+                <div class="contact2">
+                    <input type="email" name="email" placeholder="E-Mail" class="contact-inputs" required>
+                    <input type="tel" name="phone-number" placeholder="Telefon Numarası" class="contact-inputs" required
+                        minlength="10" maxlength="11" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                </div>
+                <div class="heard-from-wrapper">
+                    <select id="heard-from" name="heard-from" class="contact-inputs" onchange="showOtherOption()">
+                        <option value="">Bizi Nereden Duydunuz?</option>
+                        <option value="reklam">Reklam</option>
+                        <option value="tevelizyon">Televizyon</option>
+                        <option value="arkadas">Sosyal Medya</option>
+                        <option value="radyo">Radyo</option>
+                        <option value="tanidik">Tanıdık Vasıtasıyla</option>
+                        <option value="diger">Diğer</option>
+                    </select>
+                </div>
+                <textarea name="message" maxlength="400" placeholder="Mesaj" class="contact-inputs"></textarea>
+                <button type="submit">Gönder <img src="images/arrow_icon.png" alt=""></button>
+            </form>
+        </div>
+    </section>
+    <!--main_contact burada bitiyor-->
+
+    <!--footer burada başlıyor-->
+    <section class="footer">
+        <div class="footer-logo">
+            <div class="caption">
+                <h4>MALTEPE ÜNİVERSİTESİ HUKUK BÜROSU</h4>
+            </div>
+            <div class="container">
+                <div class="left-side">
+                    <p>Av. Kerem Efe AKSOY</p>
+                    <p>Av. Mehmet KOLUGÜÇLÜ</p>
+                    <p>Av. Ayşe KAYA</p>
+                    <p>Av. Demir DEMİRBÜKEN</p>
+                </div>
+                <div class="right-side">
+                    <div>
+                        <a href="#" class="icon-link fa-solid fa-location-dot" onclick="return false;"></a>
+                        <p> Maltepe</p>
+                    </div>
+                    <div>
+                        <a href="#" class="icon-link fa-solid fa-phone" onclick="return false;"></a>
+                        <p> +(90) 553 218 33 03</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="share">
+            <a href="https://www.facebook.com/" target="_blank" class="fab fa-facebook"></a>
+            <a href="https://twitter.com/" target="_blank" class="fab fa-twitter"></a>
+            <a href="https://www.instagram.com/" target="_blank" class="fab fa-instagram"></a>
+            <a href="https://tr.linkedin.com/" target="_blank" class="fab fa-linkedin"></a>
+        </div>
+        <div class="credit">
+            <p>MAÜ HUKUK BÜROSU | Copyright &copy;2024 designed by <span>us</span>.</p>
+        </div>
+    </section>
+    <!--footer burada bitiyor-->
 
 </body>
 

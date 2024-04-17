@@ -25,8 +25,23 @@ html {
     scroll-behavior: smooth;
 }
 
+html::-webkit-scrollbar {
+    width: 1rem;
+    background-color: #F4F3F0;
+}
+
+html::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+    border-radius: 3rem;
+    background-color: #121212;
+}
+
 body {
-    background-color: var(--main-color);
+    background: linear-gradient(270deg, #225047, #849e99);
+
 }
 
 section {
@@ -50,22 +65,21 @@ section {
     scale: 1.1;
 }
 
-.heading{
+.heading {
     color: #F4F3F0;
     padding: 1rem;
     text-transform: uppercase;
     text-align: left;
     font-size: 4rem;
     margin-bottom: 2rem;
-    margin-top: -2rem;
+    margin-top: 3rem;
     border-bottom: 0.3rem solid #F4F3F0;
-    
 }
-
 
 /* header burada başlıyor*/
 .header .logo img {
-    height: 10rem;
+    height: 7rem;
+    padding-top: 0.5rem;
 }
 
 .header {
@@ -78,8 +92,9 @@ section {
     border-radius: 30rem;
     box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
     position: sticky;
-    top: 0;
+    top: 2rem;
     z-index: 1000;
+    height: 7rem;
 }
 
 .header .navbar a {
@@ -89,12 +104,9 @@ section {
     border-bottom: 0.1rem solid transparent;
 }
 
-.header .navbar .active,
 .header .navbar a:hover {
     border-color: var(--main-color);
     padding-bottom: 0.5rem;
-
-
 }
 
 .header .search_button button {
@@ -108,7 +120,7 @@ section {
 
 /* main burada başlıyor */
 .main {
-    min-height: 100vh;
+    min-height: 110vh;
     background: url(../project/images/main.jpg) no-repeat;
     background-size: cover;
     background-position: center;
@@ -133,12 +145,19 @@ section {
 /* main burada bitiyor */
 
 /* main_içerik burada başlıyor */
-
 .main_içerik {
     background-color: #F4F3F0;
-    padding-top: 11rem;
-    padding-bottom: 15rem;
+    padding-top: 5rem;
+    padding-bottom: 13rem;
 
+}
+
+.main_içerik h1 {
+    font-size: 5rem;
+    font-weight: 400;
+    padding: 1rem 0;
+    color: #121212;
+    border-bottom: 0.3rem solid #121212;
 }
 
 .main_içerik h4 {
@@ -149,6 +168,7 @@ section {
     color: #121212;
     text-shadow: -0.1rem 0 black, 0 0.1rem black, 0.1rem 0 black, 0 -0.1rem black;
     text-transform: uppercase;
+    margin-top: 6rem;
 }
 
 .main_içerik p {
@@ -183,7 +203,104 @@ section {
 
 /* main_içerik burada bitiyor */
 
+/* main_davalar burada başlıyor */
+.main_davalar {
+    background-color: #171717;
+    background-size: cover;
+    background-position: center;
+}
+
+.main_davalar .davalar-alert {
+    color: #F4F3F0;
+    text-align: center;
+    font-size: 1.1rem;
+    padding-right: 30rem;
+    padding-left: 30rem;
+    letter-spacing: 0.3rem;
+    margin-bottom: 2rem;
+}
+
+.main_davalar .davalar-alert a {
+    color: #F4F3F0;
+    font-weight: 900;
+    border-bottom: 0.1rem solid transparent;
+}
+
+.main_davalar .davalar-alert a:hover {
+    color: #F4F3F0;
+    background-color: #0A3D33;
+    border-radius: 2rem;
+    scale: 1.1;
+}
+
+.box-davalar_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 4.3rem;
+}
+
+.box-davalar {
+    position: relative;
+    display: inline-block;
+    background-color: #2b2323;
+    cursor: pointer;
+    text-align: center;
+    margin: 3rem;
+    background-color: #4c4b4b;
+}
+
+.box-davalar:hover {
+    background-color: #0A3D33;
+    transform: scale(1.02);
+    opacity: 0.8;
+}
+
+.box-davalar img {
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    max-width: 100%;
+    max-height: 23rem;
+    transition: filter 0.2s ease;
+    -webkit-filter: grayscale(75%);
+    filter: grayscale(75%);
+}
+
+.box-davalar:hover img,
+.box-davalar:hover p {
+    -webkit-filter: grayscale(0%);
+    filter: none;
+}
+
+.box-davalar p {
+    font-size: 2.3rem;
+    color: #F4F3F0;
+    padding-top: 3rem;
+    font: bold;
+}
+
+.box-davalar p span {
+    display: block;
+    padding-bottom: 1rem;
+}
+
+/* main_davalar burada bitiyor */
+
 /* main_avukatlar burada başlıyor */
+.main_avukatlar .pointer {
+    position: relative;
+    top: -3.5rem;
+    /* Ayarlayabilirsiniz */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 30px solid #171717;
+    cursor: auto;
+}
+
 .main_avukatlar {
     text-align: center;
 }
@@ -192,7 +309,7 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap: 1.5rem;
-    
+    margin-bottom: 8rem;
 }
 
 .main_avukatlar .box_container .box {
@@ -204,15 +321,14 @@ section {
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    
-
 }
 
 .main_avukatlar .box_container .box img {
     width: 100%;
     object-fit: cover;
     padding-bottom: 0.5rem;
-    
+    border-radius: 10rem;
+    height: 40rem;
 }
 
 .main_avukatlar .box_container .box .menu-category {
@@ -223,24 +339,306 @@ section {
 .main_avukatlar .box_container .box h3 {
     font-size: 3rem;
     padding: 1rem;
+    height: 12rem;
+    display: grid;
+    align-items: center;
 }
 
 .main_avukatlar .box_container .box .içerik {
     font-size: 1.5rem;
     padding: 0.5rem 0;
+    text-align: justify;
 }
 
-.main_avukatlar .box_container .box .içerik .main_avukatlar_btn{
+
+.main_avukatlar .box_container .box .içerik .main_avukatlar_btn {
     color: #0A3D33;
     font-weight: 700;
+    text-align: left;
 }
 
-.main_avukatlar .box_container .box .içerik .main_avukatlar_btn:hover{
+.main_avukatlar .box_container .box .içerik .main_avukatlar_btn:hover {
     text-decoration: underline;
-    
+}
+/* main_avukatlar burada bitiyor */
+
+/* main_review burada başlıyor */
+.main_review {
+    background-image: url(images/review_bg.png);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.main_review h1{
+    color:#121212;
+    border-bottom: 0.3rem solid #121212;
+}
+
+.main_review_container {
+    max-width: 192rem;
+    margin: auto;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10rem;
+}
+
+.contanier_left {
+    margin: auto;
+}
+
+.contanier_left h1 {
+    font-weight: 500;
+    color: var(--main-color);
+    margin-top: 0rem;
+    margin-bottom: 5rem;
+}
+
+.contanier_left p {
+    color: #121212;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    padding: 1rem;
+    font-weight: 500;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, .15);
+    margin-top: 1.4rem;
+}
+
+.contanier_left button {
+    margin-top: 1rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    padding: 1.5rem 2.75rem;
+    border-radius: 30rem;
+    font-size: 2rem;
+    color: var(--main-color);
+    background-color: #F4F3F0;
+}
+
+.contanier_left button:hover {
+    background-color: #F4F3F0;
+    border-radius: 30rem;
+    scale: 1.1;
+}
+
+.container_right {
+    display: grid;
+    gap: 2rem;
+}
+
+.card {
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    max-width: 7.5rem;
+    border-radius: 100%;
+}
+
+.card__content {
+    display: flex;
+    gap: 1rem;
+}
+
+.card__content span i {
+    font-size: 2rem;
+    color: #0A3D33;
+}
+
+.card__details p {
+    font-style: italic;
+    color: #0A3D33;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.card__details h4 {
+    text-align: right;
+    color: #0A3D33;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* main_review burada bitiyor */
+
+/* contact burada başlıyor */
+.contact {
+    background-image: url(images/contach-bg.jpeg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 3rem;
+    margin: 2.5rem;
+}
+
+.contact-inputs {
+    width: 30rem;
+    height: 5rem;
+    border: none;
+    outline: none;
+    padding-left: 2.5rem;
+    font-weight: 500;
+    color: #666;
+    border-radius: 5rem;
+}
+
+.heard-from-wrapper #heard-from {
+    width: 60rem;
+}
+
+.contact_container {
+    display: flex;
+}
+
+.contact_container iframe {
+    margin: 2.5rem;
+    box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
+
+}
+
+.contact-left textarea {
+    height: 14rem;
+    padding-top: 1.5rem;
+    border-radius: 2rem;
+    width: 60rem;
+    resize: none;
+}
+
+.contact-inputs:focus {
+    border: 0.1rem solid #0A3D33;
+}
+
+.contact-inputs::placeholder {
+    color: #a9a9a9;
+}
+
+.contact-left button {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    font-size: 1.6rem;
+    color: #fff;
+    gap: 1rem;
+    border: none;
+    border-radius: 5rem;
+    background: linear-gradient(270deg, #0A3D33, #166e5d);
+    cursor: pointer;
+}
+
+.contact-left button img {
+    height: 1.5rem;
+}
+
+/* contact burada bitiyor */
+
+/* footer burada başlıyor */
+.footer {
+    background: #121212;
+    text-align: center;
+    padding: 0;
+}
+
+.footer .icon-link {
+    font-size: 2rem;
+    color: #F4F3F0;
+    padding-right: 1rem;
+}
+
+.footer .share {
+    margin-top: -1.5rem;
+    margin-bottom: -1rem;
+}
+
+.footer .share a {
+    width: 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    color: #F4F3F0;
+    font-size: 2rem;
+    border-radius: 50%;
+    margin: 0.3rem;
+}
+
+.footer .share a:hover {
+    background-color: #0A3D33;
+}
+
+.footer-logo {
+    width: 50rem;
+    margin: auto;
+    transform: scaleY(0.8);
 }
 
 
+.footer-logo .caption {
+    color: #F4F3F0;
+    border-bottom: 0.3rem solid #F4F3F0;
+    font-size: 2.2rem;
+    letter-spacing: 0.1rem;
+}
+
+.footer .footer-logo .container {
+    text-align: left;
+}
+
+.footer .footer-logo .container p {
+    color: #F4F3F0;
+    letter-spacing: 0.4rem;
+    font-size: 1.3rem;
+}
+
+.footer .right-side p {
+    display: inline-block;
+}
+
+.footer .left-side {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.footer .right-side {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    padding-left: 5%;
+}
+
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+/* footer burada bitiyor */
+
+/* footer_credit burada bitiyor */
 
 
-/* main_avukatlar burada bitiyor */
+.footer .credit p {
+    color: #F4F3F0;
+    text-align: center;
+}
+
+.footer .credit {
+    width: 100%;
+}
+
+/* footer_credit burada bitiyor */
