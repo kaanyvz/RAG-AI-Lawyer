@@ -12,15 +12,13 @@ _logger = get_logger(__name__)
 def main() -> None:
     settings = Configurations()
 
-    filenames = ["AYH-3.pdf", "AYH-4.pdf", "AYH-5.pdf", "AYH-6.pdf",
-                 "AYH-7.pdf", "AYH-8.pdf", "AYH-9.pdf", "AYH-10.pdf",
-                 "AYH-11.pdf"]
-    chunk_size = 1000
-    chunk_overlap = 100
+    filenames = ["AYASA-EN.pdf"]
+    chunk_size = 1500
+    chunk_overlap = 500
 
-    index_name = "langchain-doc-index-2"
-    embedding_model = "text-embedding-ada-002"
-    embedding_dimension = 1536
+    index_name = "langchain-doc-index-4"
+    embedding_model = "text-embedding-3-large"
+    embedding_dimension = 3072
     metric = "cosine"
 
     batch_size = 100
@@ -45,3 +43,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
