@@ -12,11 +12,11 @@ _logger = get_logger(__name__)
 def main() -> None:
     settings = Configurations()
 
-    filenames = ["AYASA-EN.pdf"]
-    chunk_size = 1500
-    chunk_overlap = 500
+    filenames = ["CivilCode.pdf"]
+    chunk_size = 1000
+    chunk_overlap = 200
 
-    index_name = "langchain-doc-index-4"
+    index_name = "langchain-doc-index-1"
     embedding_model = "text-embedding-3-large"
     embedding_dimension = 3072
     metric = "cosine"
@@ -43,4 +43,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
