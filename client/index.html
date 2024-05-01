@@ -10,6 +10,7 @@
     <title>Avukatlık Acenta</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 
 
@@ -26,14 +27,8 @@
             <a href="#avukatlarimiz">AVUKATLARIMIZ</a>
             <a href="#memnuniyet">MEMNUNİYET</a>
             <a href="#contact">BİZE ULAŞIN</a>
-            <a href="chatbot.html">CHATBOT</a>
+            <a href="chatbot.html" id="glowing_ensr">E.N.S.R</a>
         </nav>
-
-        <div class="search_button">
-            <button>
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </div>
     </header>
     <!-- header burada bitiyor-->
 
@@ -43,14 +38,14 @@
             <h3>Suçlanıyor musunuz? </h3>
             <h3>Gözaltına mı alındınız?</h3>
             <h3><span>En İyi Savunmayı "Siz" Hak Ediyorsunuz!</span></h3>
-            <a href="avukatlar.html" class="btn">Bir Avukatımızla Görüşün</a>
+            <a href="index.html#contact" class="btn">Biz Sizi Arayalım</a>
         </div>
     </section>
     <!-- main burada bitiyor-->
 
     <!-- main_içerik burada başlıyor-->
-    <section class="main_içerik" id="hakkimizda">
-        <h1 class="heading">Biz Kimiz?</h1>
+    <section class="main_içerik">
+        <h1 class="heading" id="hakkimizda">Biz Kimiz?</h1>
         <h4>Maltepe Üniversitesi Hukuk Bürosu</h4>
         <p>Maltepe Üniversitesi Hukuk Bürosu olarak, Türkiye'de ilk kez sunulan <a href="chatbot.html">yapay zeka</a>
             destekli
@@ -66,52 +61,52 @@
     <!-- main_içerik burada bitiyor-->
 
     <!-- main_davalar burada başlıyor-->
-    <section class="main_davalar" id="davalarimiz">
-        <h1 class="heading">Ne olursa olsun Size yardım edeceğiz.</h1>
+    <section class="main_davalar">
+        <h1 class="heading" id="davalarimiz">Ne olursa olsun Size yardım edeceğiz.</h1>
         <div class="box-davalar_container">
             <a href="davalar.html">
-                <div class="box-davalar">
+                <div class="box-davalar" id="link1" data-target="btn1">
                     <img src="images/aile_içi_şiddet.jpg" alt="kutu1">
                     <p><span>Aile & Boşanma</span> <span>Hukuku</span></p>
                 </div>
             </a>
             <a href="davalar.html">
-                <div class="box-davalar">
+                <div class="box-davalar" id="link2">
                     <img src="images/ceza_hukuku.jpg" alt="kutu1">
                     <p><span>Ceza</span> <span>Hukuku</span></p>
                 </div>
             </a>
             <a href="davalar.html">
-                <div class="box-davalar">
+                <div class="box-davalar" id="link3">
                     <img src="images/gayrimenkul_hukuk.jpg" alt="kutu1">
                     <p><span>Gayrimenkul</span> <span>Hukuku</span></p>
                 </div>
             </a>
-            <a href="davalar.html">
+            <a href="davalar.html" id="link4">
                 <div class="box-davalar">
                     <img src="images/insan_hakları_hukuku.jpg" alt="kutu1">
                     <p><span>İnsan Hakları</span> <span>Hukuku</span></p>
                 </div>
             </a>
-            <a href="davalar.html">
+            <a href="davalar.html" id="link5">
                 <div class="box-davalar">
                     <img src="images/miras-hukuku.jpg" alt="kutu1">
                     <p><span>Miras</span> <span>Hukuku</span></p>
                 </div>
             </a>
-            <a href="davalar.html">
+            <a href="davalar.html" id="link6">
                 <div class="box-davalar">
                     <img src="images/medeni_hukuk.jpg" alt="kutu1">
                     <p><span>Medeni</span> <span>Hukuk</span></p>
                 </div>
             </a>
-            <a href="davalar.html">
+            <a href="davalar.html" id="link7">
                 <div class="box-davalar">
                     <img src="images/şirketler_hukuku.png" alt="kutu1">
                     <p><span>Şirketler</span> <span>Hukuku</span></p>
                 </div>
             </a>
-            <a href="davalar.html">
+            <a href="davalar.html" id="link8">
                 <div class="box-davalar">
                     <img src="images/tazminat_hukuku.jpg" alt="kutu1">
                     <p><span>Tazminat</span> <span>Hukuku</span></p>
@@ -131,9 +126,9 @@
     <!-- main_davalar burada bitiyor-->
 
     <!-- main_avukatlar burada başlıyor-->
-    <section class="main_avukatlar" id="avukatlarimiz">
+    <section class="main_avukatlar">
         <div class="pointer"></div>
-        <h1 class="heading">Sizinle her daim ilgilenecek ekip arkadaşlarımız</h1>
+        <h1 class="heading" id="avukatlarimiz">Sizinle her daim ilgilenecek ekip arkadaşlarımız</h1>
         <div class="box_container">
             <div class="box">
                 <div class="box-head">
@@ -144,8 +139,8 @@
                             ve hukuki danışmanlık faaliyeti gösteren Av. Kerem Efe AKSOY, hukuki tecrübesi ve
                             başarılarıyla
                             İstanbul'da çalışmalarına devam etmektedir. <a href="avukatlar.html"
-                            class="main_avukatlar_btn">Daha detaylı incelemek
-                            için tıklayınız.</a></p>
+                                class="main_avukatlar_btn">Daha detaylı incelemek
+                                için tıklayınız.</a></p>
                     </div>
                 </div>
             </div>
@@ -159,8 +154,8 @@
                             hukuku
                             ve ticaret hukuku konularında uzmanlaşmıştır. Müvekkillerine etkin ve başarılı bir şekilde
                             hizmet vermektedir. <a href="avukatlar.html" class="main_avukatlar_btn">Daha detaylı
-                            incelemek
-                            için tıklayınız.</a></p>
+                                incelemek
+                                için tıklayınız.</a></p>
                     </div>
                 </div>
             </div>
@@ -182,11 +177,12 @@
                 <div class="box-head">
                     <img src="images/avukat4.png" alt="avukat">
                     <h3>Av. Demir DEMİRBÜKEN</h3>
-                    <div class="içerik"><p>1991 Erzurum doğumlu olan Av. Yusuf ÇOLAK Ondokuz Mayıs Üniversitesi Hukuk
-                        Fakültesi’nden mezun olmuştur. Yüksek Lisans tezini Avrupa İnsan Hakları Sözleşmesi üzerine
-                        yazmıştır. Eğitim hayatı ve staj süresi boyunca Aile Hukuku, İş Hukuku, İdare Hukuku, Ceza
-                        Hukuku, Sigorta Hukuku ve İcra Hukuku alanlarında uzmanlaşmıştır. <a href="avukatlar.html"
-                            class="main_avukatlar_btn">Daha detaylı incelemek için tıklayınız.</a></p>
+                    <div class="içerik">
+                        <p>1991 Erzurum doğumlu olan Av. Yusuf ÇOLAK Ondokuz Mayıs Üniversitesi Hukuk
+                            Fakültesi’nden mezun olmuştur. Yüksek Lisans tezini Avrupa İnsan Hakları Sözleşmesi üzerine
+                            yazmıştır. Eğitim hayatı ve staj süresi boyunca Aile Hukuku, İş Hukuku, İdare Hukuku, Ceza
+                            Hukuku, Sigorta Hukuku ve İcra Hukuku alanlarında uzmanlaşmıştır. <a href="avukatlar.html"
+                                class="main_avukatlar_btn">Daha detaylı incelemek için tıklayınız.</a></p>
                     </div>
                 </div>
             </div>
@@ -195,8 +191,8 @@
     <!-- main_avukatlar burada bitiyor-->
 
     <!--main_review burada başlıyor-->
-    <section class="main_review" id="memnuniyet">
-        <h1 class="heading">Müşterilerimizin Deneyimlerini Keşfedin</h1>
+    <section class="main_review">
+        <h1 class="heading" id="memnuniyet">Müşterilerimizin Deneyimlerini Keşfedin</h1>
         <div class="main_review_container">
 
             <div class="contanier_left">
@@ -252,8 +248,8 @@
     <!--main_review burada bitiyor-->
 
     <!--main_contact burada başlıyor-->
-    <section class="contact" id="contact">
-        <h1 class="heading">İletişim</h1>
+    <section class="contact">
+        <h1 class="heading" id="contact">İletişim</h1>
         <div class="contact_container">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12052.156012043335!2d29.1915376!3d40.9587244!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac5714db44911%3A0x96cd5cf807f5b40b!2sMaltepe%20%C3%9Cniversitesi%20M%C3%BChendislik%20ve%20Do%C4%9Fa%20Bilimleri%20Fak%C3%BCltesi!5e0!3m2!1str!2str!4v1712238334809!5m2!1str!2str"
@@ -326,7 +322,70 @@
         </div>
     </section>
     <!--footer burada bitiyor-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var links = document.querySelectorAll('.navbar a');
 
+            // Bağlantılara tıklama olayını ekle
+            links.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
+                    var targetId = this.getAttribute('href'); // Hedef bölümün ID'sini al
+                    var targetSection = document.querySelector(targetId); // Hedef bölümü bul
+                    // Hedef bölümün ekranın üst kısmına gelmesini sağla (isteğe bağlı)
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            // E.N.S.R bağlantısına tıklandığında başka bir sayfaya yönlendir
+            var ensrLink = document.querySelector('a[href="chatbot.html"]');
+            ensrLink.addEventListener('click', function (event) {
+                event.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
+                window.location.href = "chatbot.html"; // Yeni sayfaya yönlendir
+            });
+
+            // Sayfa kaydırıldığında çalışacak fonksiyon
+            window.addEventListener('scroll', function () {
+                var scrollPosition = window.scrollY;
+                var windowHeight = window.innerHeight;
+
+                // Tüm sectionları döngüye alın
+                var sections = document.querySelectorAll('section');
+                sections.forEach(function (section, index) {
+                    var sectionTop = section.offsetTop;
+                    var sectionHeight = section.offsetHeight;
+
+                    // Section'un tamamı ekranın üst %90'ında görünüyorsa
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + (windowHeight * 0.9)) {
+                        // Tüm bağlantılardan active olanı kaldırma
+                        links.forEach(function (link) {
+                            link.classList.remove('active');
+                        });
+
+                        // Mevcut section'a karşılık gelen bağlantıyı active yapma
+                        links[index].classList.add('active');
+                    }
+                });
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            var links = document.querySelectorAll('.header a');
+
+            // Bağlantılara tıklama olayını ekle
+            links.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
+                    var targetId = this.getAttribute('href'); // Hedef bölümün ID'sini al
+                    var targetSection = document.querySelector(targetId); // Hedef bölümü bul
+                    // Hedef bölümün ekranın üst kısmına gelmesini sağla (isteğe bağlı)
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+          
+
+        
+    </script>
 </body>
 
 </html>

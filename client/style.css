@@ -40,7 +40,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 body {
-    background: linear-gradient(270deg, #225047, #849e99);
+    background: #dcdcdc;
 
 }
 
@@ -77,6 +77,9 @@ section {
 }
 
 /* header burada başlıyor*/
+.header .logo{
+    margin: 2%;
+}
 .header .logo img {
     height: 7rem;
     padding-top: 0.5rem;
@@ -96,32 +99,54 @@ section {
     z-index: 1000;
     height: 7rem;
 }
-
+.header .navbar{
+    margin-right: 10%;
+}
 .header .navbar a {
     margin: 0 1rem;
     font-size: 1.6rem;
     color: var(--black-color);
     border-bottom: 0.1rem solid transparent;
 }
+.header .navbar #glowing_ensr{
+    padding: 0rem;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(to right, #ff5733, #6f33ff, #33a3ff, #33ff79);
+    background-size: 300% 200%;
+    animation: glowing 3s ease-in-out infinite;
+    border-bottom:0;
+    padding-bottom: 0;
 
-.header .navbar a:hover {
+}
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+.header .navbar #glowing_ensr:hover{
+    position: relative;
+    font-size: 1.9em;
+}
+
+/* Aktif (tıklanmış) bağlantılar */
+.navbar a.active,
+.navbar a:hover {
     border-color: var(--main-color);
     padding-bottom: 0.5rem;
 }
-
-.header .search_button button {
-    cursor: pointer;
-    font-size: 2.5rem;
-    margin-left: 3rem;
-    background-color: transparent;
-}
-
 /* header burada bitiyor */
 
 /* main burada başlıyor */
 .main {
     min-height: 110vh;
-    background: url(../project/images/main.jpg) no-repeat;
+    background: url(images/main.jpg) no-repeat;
     background-size: cover;
     background-position: center;
     margin-top: -14.5rem;
@@ -141,13 +166,23 @@ section {
 .main .content h3 span {
     font-size: 2.5rem;
 }
+.main .content a {
+    display: flex;
+    margin-top: 2rem;
+    font-size: 2.5rem;
+    width: 30rem;
+    height: 5rem;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
 
 /* main burada bitiyor */
 
 /* main_içerik burada başlıyor */
 .main_içerik {
     background-color: #F4F3F0;
-    padding-top: 5rem;
+    padding-top: 8rem;
     padding-bottom: 13rem;
 
 }
@@ -158,6 +193,7 @@ section {
     padding: 1rem 0;
     color: #121212;
     border-bottom: 0.3rem solid #121212;
+
 }
 
 .main_içerik h4 {
@@ -205,6 +241,7 @@ section {
 
 /* main_davalar burada başlıyor */
 .main_davalar {
+    padding-top: 8rem;
     background-color: #171717;
     background-size: cover;
     background-position: center;
@@ -369,6 +406,7 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
+    padding-top: 8rem;
 }
 
 .main_review h1{
@@ -478,6 +516,7 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
+    padding-top: 8rem;
 }
 
 .contact-left {
@@ -547,6 +586,201 @@ section {
 }
 
 /* contact burada bitiyor */
+
+/* main_forum burada başlıyor */
+.main_forum{
+    min-height: 110vh;  
+    background: url(images/ai.jpg);
+    background-size: cover;
+    background-position: center;
+    margin-top: -14.5rem;
+    margin-bottom: 0;
+    
+}
+.main_forum .container{
+    position: relative;
+    max-width: 80rem;
+    margin: 16rem 0rem 0rem 50rem;
+}
+.main_forum .container h1{
+    font-size: 6rem;
+    color: #F4F3F0;
+    text-align: center;
+    border: 0;
+    display: flex;
+    height: 8rem;
+    justify-content: center;
+    align-items: center;
+}
+#gradient-multiline {
+    position: relative;
+    background: #171717;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 1rem;
+    line-height: 2em;
+    overflow:hidden;
+  }
+  
+  #gradient-multiline span {
+    color: #fff;
+    padding: 0.225rem 0.5rem;
+  }
+  
+  @supports(mix-blend-mode: lighten) {
+    #gradient-multiline::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      pointer-events: none;
+      background: linear-gradient(1000deg, #003573, #491a4e);
+      mix-blend-mode: lighten;
+    }
+
+  }
+.main_forum .container p{
+    font-size: 1.5rem;
+    color: #F4F3F0;
+}
+.main_forum .container_sec{
+    position: relative;
+    max-width: 80%;
+    margin-top: 4rem;
+    margin-inline: 10%;
+    text-align: center;
+}
+.main_forum .container_sec p{
+    position: relative;
+    right: 0rem;
+    max-width: 100%;
+    font-size: 1.5rem;
+    color: #F4F3F0;
+}
+/* main_forum burada bitiyor */
+
+/* avukatlar-main burada başlıyor */
+
+.avukatlar-main .container .row .bar{
+    margin-bottom: 2rem;
+    display: flex;
+    height: 60rem;
+    align-items: center; 
+    border-radius: 1rem;
+    border-style:solid;   
+    box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
+}
+.avukatlar-main .container .row .bar img{
+    width: 25%;
+    margin: 0rem 5rem 1rem 5rem;
+    border-radius: 2rem;
+    
+}
+.avukatlar-main .container .row .bar h1{
+    text-align: center;
+    font-size: 5rem;
+    margin: 2rem 5rem 0rem 0rem;
+    box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
+}
+.avukatlar-main .container .row .bar p{
+    font-size: 2rem;
+    
+    margin: 2rem 5rem 0rem 0rem;
+}
+/* avukatlar-main burada bitiyor */
+
+
+
+/* chatbot burada başlıyor */
+.chatbot_section .pointer {
+    position: relative;
+    top: -3.5rem;
+    /* Ayarlayabilirsiniz */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 30px solid #171717;
+    cursor: auto;
+}
+/* chatbot burada bitiyor */
+
+/* davalar.html_main burada başlıyor */
+.main_davalar2 .container2 .row2{
+    margin-top: 2rem;
+    display: flex;
+}
+
+.main_davalar2 .container2 .row2 .left-side2{
+    flex: 80%;
+    height: 100%;
+    display: none;
+}
+.main_davalar2 .container2 .row2 .left-side2 #baslik{
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    display: none;
+    
+}
+.main_davalar2 .container2 .row2 .left-side2 #metin{
+    font-size: 1.5rem;
+    display: none;
+}
+.main_davalar2 .container2 .row2 .left-side2 #resim{
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+.main_davalar2 .container2 .row2 .right-side2{
+    flex: 20%;
+    margin: 1rem 10rem 0rem 10rem;
+    height: 100%;
+    position: sticky;
+    top: 14rem;
+    transition: transform 0.5s ease;
+}
+.main_davalar2 .container2 .row2 .right-side2.slide-in {
+    transform: translateX(0); /* Sağa doğru kaydırma */
+}
+
+  
+.main_davalar2 .container2 .row2 .right-side2 ul{
+    list-style: none;
+
+}
+.main_davalar2 .container2 .row2 .right-side2 ul li{
+    border-bottom: 1px solid #ccc; /* Her öğenin altına gri bir çizgi ekler */
+    
+}
+
+.main_davalar2 .container2 .row2 .right-side2 ul li:first-child{
+    border-top: 1px solid #ccc;
+}
+.main_davalar2 .container2 .row2 .right-side2 ul li button{
+    font-size: 2rem;
+    padding-left: 1rem;
+    background: 0;
+    cursor: pointer;
+    width: 30rem;
+    height: 4rem;
+    text-align: left;
+}
+.main_davalar2 .container2 .row2 .right-side2 ul li.active{
+    background-color: grey;
+}
+.main_davalar2 .container2 .row2 .right-side2 ul li button.active{
+    background-color: grey;
+}
+.main_davalar2 .container2 .row2 .right-side2 ul li button:hover{
+    background-color: grey;
+}
+
+/* davalar.html_main burada bitiyor */
 
 /* footer burada başlıyor */
 .footer {
