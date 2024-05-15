@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawyer AI</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+    <section class="side-bar">
+        <input type="text" id="api-key" placeholder="Enter your API KEY">
+        <button id="save-key-btn" class="save-key-btn">Save</button>
+
+        <button id="new-chat-btn" class="new-chat">New Chat</button>
+        <div class="chat-history">
+            <select id="chat-history-dropdown">
+                <option value="">Select Chat History</option>
+            </select>
+            <select id="pinecone-index-dropdown">
+                <option value="">Select Pinecone Index</option>
+                <option value="3">Rental Law</option>
+                <option value="4">Constitution Law</option>
+            </select>
+        </div>
+        <nav>
+            <p>Made By <a href="https://github.com/kaanyvz/RAG-AI-Lawyer" target="_blank">Team S.A.U.L</a></p>
+        </nav>
+    </section>
+
+    <div class="main-content">
+        <div class="title1">
+            <h1 style="color: #4CAF50;">Lawyer AI</h1>
+        </div>
+        <div class="chat-section">
+            <div class="chat-history" id="chat-history">
+                <!-- Chat history will be populated dynamically -->
+                <div id="chat-conversation">
+                    <!-- Chat conversation will be populated dynamically -->
+                </div>
+            </div>
+            <div class="input-section">
+                <input type="text" id="user-question" placeholder="Enter your question">
+                <button id="get-response-btn" class="get-response-btn">Get Response</button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="chat.js"></script>
+</body>
+</html>
