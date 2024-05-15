@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+
+* {
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+ }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(52,53,65,1);
+    display: flex;
+}
+
+h1 {
+    font-size: 35px;
+    font-weight: 600;
+    padding: 50px 0;
+    color: #ECECF1;
+}
+
+.side-bar {
+    background-color: #202123;
+    width: 500px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main-content {
+    overflow: auto;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.chat-section {
+    margin-top: 0;
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.info {
+    color : rgba(255, 255, 255, .5);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 10px;
+}
+.title{
+    margin-bottom: 0;
+    color:   #4CAF50;
+
+    height: max-content;
+}
+
+.title1{
+    margin-bottom: 0;
+    color:   #4CAF50;
+    font-size: 20px;
+    height: max-content;
+}
+
+.input-section {
+
+    position: relative;
+    /*height: 100vh;*/
+    width: 100%;
+    max-width: 100rem;
+}
+
+
+.input-section #submit {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    bottom: 15px;
+    transform: rotate(90deg);
+}
+
+
+input {
+    border: none;
+    background-color: rgba(255, 255, 255, .1);
+    border-color: rgba(32,33,35,.5);
+    width: 100%;
+    height: 50px;
+    font-size: 22px;
+    padding-left: 1rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, .05) 0px 54px 55px,
+    rgba(0, 0, 0, .05) 0px -12px 30px,
+    rgba(0, 0, 0, .05) 0px 4px 6px,
+    rgba(0, 0, 0, .05) 0px 12px 3px,
+    rgba(0, 0, 0, .09) 0px -3px 5px;
+}
+
+input:focus {
+    outline: none;
+}
+
+
+
+/* SIDE BAR STYLES */
+
+button {
+    border: solid .5px rgba(255, 255, 255, .2);
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+nav {
+    border-top: solid .5px rgba(255, 255, 255, .2);
+    margin: 5px;
+    padding: 5px;
+}
+
+nav p {
+    text-align: center;
+}
+
+.chat-history {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chat-history p {
+    cursor: pointer;
+}
+#api-key {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px; ;
+    width: 90%;
+    padding: 10px;
+}
+#save-key {
+    margin-bottom: 10px;
+}
+
+#api-key {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    width: 90%;
+    padding: 10px;
+}
+
+#save-key {
+    margin-bottom: 10px;
+}
+
+#new-chat {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.chat-history {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 500px; /* Adjust height as needed */
+    overflow-y: auto; /* Add scrollbar when content exceeds height */
+}
+.chat-history::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.chat-history {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.chat-history .chat-item {
+    background-color: rgba(32, 33, 35, 1);
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.chat-history p {
+    cursor: pointer;
+}
+
+.chat-history select {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 16px;
+    padding: 5px;
+    border: none;
+    outline: none;
+}
+
+.chat-history option {
+    background-color: rgba(32, 33, 35, 1);
+    color: #fff;
+}
+
+#chat-history-dropdown{
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 16px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    margin-bottom: 20px;
+
+}
+
+
+/* Additional styles for dropdown arrow */
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: "\25BC";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Additional styles for the input section */
+.input-section {
+    display: flex;
+    align-items: center;
+}
+
+.input-section input[type="text"] {
+    flex: 1;
+    border: none;
+    background-color: rgba(255, 255, 255, .1);
+    border-color: rgba(32,33,35,.5);
+    height: 50px;
+    font-size: 22px;
+    padding-left: 1rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, .05) 0px 54px 55px,
+                rgba(0, 0, 0, .05) 0px -12px 30px,
+                rgba(0, 0, 0, .05) 0px 4px 6px,
+                rgba(0, 0, 0, .05) 0px 12px 3px,
+                rgba(0, 0, 0, .09) 0px -3px 5px;
+}
+
+.input-section button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.new-chat {
+    cursor: pointer;
+    hover: #4CAF50;
+}
+
+.new-chat:hover {
+    background-color: #046946;
+}
+
+
+.save-key-btn {
+    cursor: pointer;
+}
+
+.save-key-btn:hover {
+    background-color: #046946;
+}
+
+
+.get-response-btn {
+    cursor: pointer;
+}
+
+.get-response-btn:hover {
+    background-color: #0e8d10;
+}
+
+/* chat.css */
+
+.chat-conversation {
+    background-color: rgba(32, 33, 35, 1);
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+.user-question {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #ffffff;
+    text-align: left;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.bot-response {
+    background-color: rgba(0, 123, 255, 0.1); /* Change this to a different color */
+    color: #ffffff; /* Change text color if needed */
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
