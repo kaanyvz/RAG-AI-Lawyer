@@ -16,7 +16,7 @@ def main() -> None:
     chunk_size = 1000
     chunk_overlap = 200
 
-    index_name = "langchain-doc-index-3"
+    index_name = "langchain-doc-index-5"
     embedding_model = "text-embedding-3-large"
     embedding_dimension = 3072
     metric = "cosine"
