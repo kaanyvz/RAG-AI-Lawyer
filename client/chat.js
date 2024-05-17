@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const newChatButton = document.getElementById("new-chat-btn");
     const userQuestionInput = document.getElementById("user-question");
     const getResponseButton = document.getElementById("get-response-btn");
-    const chatHistoryDropdown = document.getElementById("chat-history-dropdown");
+    // const chatHistoryDropdown = document.getElementById("chat-history-dropdown");
     const chatConversation = document.getElementById('chat-conversation');
     const pineconeIndexDropdown = document.getElementById("pinecone-index-dropdown");
     const spinner = document.getElementById("spinner");
@@ -14,27 +14,34 @@ document.addEventListener("DOMContentLoaded", function () {
     let chatHistory = [];
 
     // Function to fetch chat history files and update dropdown
-    const updateChatHistoryDropdown = async () => {
+
+    newChatButton.disabled = true;
+    newChatButton.classList.add("blocked");
+    pineconeIndexDropdown.disabled = true;
+    pineconeIndexDropdown.classList.add("blocked");
+    const updateChatHistoryButtons = async () => {
         const response = await fetch("http://localhost:8000/get_chat_history_files");
         const data = await response.json();
 
-        chatHistoryDropdown.innerHTML = "<option value=''>Select Chat History</option>";
-        data.chat_history_files.forEach((file) => {
-            const option = document.createElement("option");
-            option.textContent = file;
-            option.value = file;
-            chatHistoryDropdown.appendChild(option);
+        const chatHistoryButtonsContainer = document.getElementById("chat-history-buttons");
+        chatHistoryButtonsContainer.innerHTML = "";
+
+        data.chat_history_files.forEach((file, index) => {
+            const chatHistoryButton = document.createElement("button");
+            chatHistoryButton.textContent = `Chat History ${index + 1}`;
+            chatHistoryButton.className = "chat-history-button";
+            chatHistoryButton.value = file;
+            chatHistoryButton.addEventListener("click", () => {
+                loadChatHistory(file);
+            });
+            chatHistoryButtonsContainer.appendChild(chatHistoryButton);
         });
     };
 
     // Function to load chat history into main content
     const loadChatHistory = async (file) => {
-        const response = await fetch("http://localhost:8000/select_chat_history", {
+        const response = await fetch(`http://localhost:8000/select_chat_history?chat_history_id=${file}`, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ chat_history_file: file }),
         });
         const data = await response.json();
         console.log(data); // Add this line to check the data received
@@ -64,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         const data = await response.json();
         console.log(data.message);
-        updateChatHistoryDropdown();
+        updateChatHistoryButtons();
     };
 
     // Function to save API key
@@ -78,9 +85,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify({ openai_api_key: openaiApiKey }),
             });
-            const data = await response.json();
-            console.log(data.message);
-            updateChatHistoryDropdown();
+            if(response.status === 200){
+                const data = await response.json();
+                console.log(data.message);
+                updateChatHistoryButtons();
+                newChatButton.disabled = false;
+                newChatButton.classList.remove("blocked");
+                pineconeIndexDropdown.disabled = false;
+                pineconeIndexDropdown.classList.remove("blocked");
+            }else{
+                alert("Error: Invalid OpenAI API Key.");
+            }
+
         } else {
             alert("Please enter your API key.");
         }
@@ -101,26 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event listener for saving API key
     saveKeyButton.addEventListener("click", saveApiKey);
 
-    // Event listener for selecting chat history from dropdown
-    chatHistoryDropdown.addEventListener("change", function () {
-        const selectedFile = this.value;
-        if (selectedFile) {
-            // Clear current chat conversation
-            chatConversation.innerHTML = '';
-
-            // Load chat history
-            loadChatHistory(selectedFile).then(chatHistory => {
-                // Iterate over chat history and append each message to chat conversation
-                chatHistory.forEach(chat => {
-                    if (chat.type === 'user') {
-                        appendUserMessage(chat.message);
-                    } else if (chat.type === 'bot') {
-                        appendBotMessage(chat.message);
-                    }
-                });
-            });
-        }
-    });
 
     // Event listener for creating new chat
     newChatButton.addEventListener("click", createNewChat);
