@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from backend.app_streamlit import get_response, load_chat_history, save_chat_history, generate_chat_history_file, \
-    get_chat_history_files, delete_chat_history
+    get_chat_history_files, delete_chat_history, get_db
 
 app = FastAPI()
 
@@ -65,18 +65,6 @@ async def get_chat_history_files_endpoint():
     return {"chat_history_files": chat_history_files}
 
 
-@app.post("/select_chat_history")
-async def select_chat_history(chat_history: ChatHistory):
-    """
-    This endpoint is responsible for selecting a chat history file.
-    It takes in the chat history file as a query parameter and returns the selected chat history.
-    """
-    global chat_history_file
-    chat_history_file = chat_history.chat_history_file
-    chat_history_content = load_chat_history(chat_history_file)
-    return {"chat_history": chat_history_content}
-
-
 @app.post("/create_new_chat")
 async def create_new_chat():
     """
@@ -85,10 +73,22 @@ async def create_new_chat():
     """
     global chat_history_file
     chat_history_file = generate_chat_history_file(openai_api_key)
-    chat_history_files.append(chat_history_file)
+    chat_history_files.append(chat_history_file["_id"])
     chat_history = []
-    save_chat_history(chat_history, chat_history_file)
-    return {"message": "New chat created successfully"}
+    save_chat_history(chat_history, chat_history_file["_id"], chat_history_file["chat_title"])
+    return {"message": "New chat created successfully", "chat_title": chat_history_file["chat_title"]}
+
+@app.post("/select_chat_history")
+async def select_chat_history(chat_history_id: str):
+    """
+    This endpoint is responsible for selecting a chat history file.
+    It takes in the chat history ID as a query parameter and returns the selected chat history.
+    """
+    global chat_history_file
+    chat_history_file = chat_history_id
+    chat_history_content = load_chat_history(chat_history_file)
+    print(chat_history_content)
+    return {"chat_history": chat_history_content["chat_history"], "chat_title": chat_history_content["chat_title"]}
 
 
 @app.post("/get_response")
@@ -100,10 +100,10 @@ async def handle_get_response(user_query: Query):
     """
     global chat_history_file
     chat_history = load_chat_history(chat_history_file)
-    response = get_response(user_query.question, chat_history, pinecone_index_number)
-    save_chat_history(response.get("chat_history", chat_history), chat_history_file)  # Use get to handle KeyError
+    response = get_response(user_query.question, chat_history["chat_history"], pinecone_index_number)
+    save_chat_history(response.get("chat_history", chat_history["chat_history"]), chat_history_file,
+                      chat_history["chat_title"])
     return response
-
 
 @app.delete("/delete_chat_history/{chat_history_id}")
 async def delete_chat_history_endpoint(chat_history_id: str):
@@ -118,3 +118,20 @@ async def delete_chat_history_endpoint(chat_history_id: str):
         return {"message": "Chat history deleted successfully"}
     except HTTPException as e:
         return e.detail
+
+
+@app.post("/update_chat_title")
+async def update_chat_title(chat_history_id: str, chat_title: str):
+    """
+    This endpoint is responsible for updating the chat title of a chat history.
+    It takes in the chat history ID and the new chat title as query parameters.
+    """
+    db = get_db()
+    chat_histories = db["chat_histories"]
+    chat_histories.update_one({"_id": chat_history_id}, {"$set": {"chat_title": chat_title}}, upsert=True)
+    updated_chat_history = chat_histories.find_one({"_id": chat_history_id})
+
+    return {
+        "message": "Chat title updated successfully",
+        "chat_title": updated_chat_history.get("chat_title")  # Return the updated chat title
+    }

@@ -13,6 +13,7 @@ from langchain_openai.llms import OpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from fastapi import HTTPException
+import requests
 
 load_dotenv()
 
@@ -32,37 +33,34 @@ chat_history_files = []
 
 
 def get_db():
-    # replace with your db uri
-    uri = "<ENTER YOUR MONGODB URI HERE>"
+    uri = "mongodb+srv://kaanyvvz:64NjqO7nf55YYW9d@ragai.oaiqvgh.mongodb.net/?retryWrites=true&w=majority&appName=RAGAI"
     client = MongoClient(uri)
-    db = client["<ENTER YOUR DBCLIENT HERE>"]  # replace with your database name
+    db = client["RAGAI"]  # replace with your database name
     return db
 
 
-def generate_chat_history_file(openai_api_key: str) -> str:
+def generate_chat_history_file(openai_api_key: str) -> dict[str, str]:
     """
     This function is responsible for generating a new chat history file.
     It takes in the OpenAI API key as input and returns the newly created chat history file.
     """
     uuid_str = str(uuid.uuid4())
-    return CHAT_HISTORY_FILE_TEMPLATE.format(openai_api_key, uuid_str)
+    chat_title = f"Chat History {len(get_chat_history_files(openai_api_key)) + 1}"
+    return {"_id": CHAT_HISTORY_FILE_TEMPLATE.format(openai_api_key, uuid_str), "chat_title": chat_title}
 
 
 def load_chat_history(chat_history_id):
-    """
-    This function is responsible for loading the chat history from a file.
-    It takes in the chat history file as input and returns the loaded chat history.
-    """
     db = get_db()
     chat_histories = db["chat_histories"]
     chat_history = chat_histories.find_one({"_id": chat_history_id})
-    return chat_history["chat_history"] if chat_history else []
+    return {"chat_history": chat_history["chat_history"], "chat_title": chat_history["chat_title"]}
 
 
-def save_chat_history(chat_history, chat_history_id):
+def save_chat_history(chat_history, chat_history_id, chat_title):
     db = get_db()
     chat_histories = db["chat_histories"]
-    chat_histories.update_one({"_id": chat_history_id}, {"$set": {"chat_history": chat_history}}, upsert=True)
+    chat_histories.update_one({"_id": chat_history_id},
+                              {"$set": {"chat_history": chat_history, "chat_title": chat_title}}, upsert=True)
 
 
 def get_chat_history_files(openai_api_key: str):
@@ -70,9 +68,12 @@ def get_chat_history_files(openai_api_key: str):
     This function is responsible for getting the chat history files.
     It takes in the OpenAI API key as input and returns the chat history files associated with that key.
     """
+    if not validate_openai_api_key(openai_api_key):
+        raise HTTPException(status_code=400, detail="Invalid OpenAI API key")
     db = get_db()
     chat_histories = db["chat_histories"]
-    chat_history_ids = [doc["_id"] for doc in chat_histories.find()]
+    chat_history_ids = [doc["_id"] for doc in chat_histories.find() if
+                        doc["_id"].startswith(f"chat_history_{openai_api_key}")]
     return chat_history_ids
 
 
@@ -91,6 +92,17 @@ def delete_chat_history(chat_history_id: str):
 
 def initialize_pinecone_client(api_key: str) -> Pinecone:
     return Pinecone(api_key=st.secrets["pinecone_api_key"])
+
+
+def validate_openai_api_key(openai_api_key: str) -> bool:
+    """
+    This function is responsible for validating the OpenAI API key.
+    It takes in the OpenAI API key as input and returns True if the key is valid, False otherwise.
+    """
+    url = "https://api.openai.com/v1/engines"
+    headers = {"Authorization": f"Bearer {openai_api_key}"}
+    response = requests.get(url, headers=headers)
+    return response.status_code == 200
 
 
 def get_response(user_query: str, chat_history: list, pinecone_index_number: str) -> Dict[str, Optional[str]]:
