@@ -1,8 +1,13 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from backend.app_streamlit import get_response, load_chat_history, save_chat_history, generate_chat_history_file, \
-    get_chat_history_files, delete_chat_history, get_db
+from backend.app_streamlit import (get_response,
+                                   load_chat_history,
+                                   save_chat_history,
+                                   generate_chat_history_file,
+                                   get_chat_history_files,
+                                   delete_chat_history,
+                                   get_db)
 
 app = FastAPI()
 
@@ -57,12 +62,12 @@ async def set_pinecone_index_number(index_number: int):
 
 
 @app.get("/get_chat_history_files")
-async def get_chat_history_files_endpoint():
+async def get_chat_history_files_endpoint(openai_api_key: str):
     """
     This endpoint is responsible for getting the chat history files.
     It takes in the OpenAI API key as a query parameter and returns the chat history files associated with that key.
     """
-    return {"chat_history_files": chat_history_files}
+    return {"chat_history_files": get_chat_history_files(openai_api_key)}
 
 
 @app.post("/create_new_chat")
@@ -77,6 +82,7 @@ async def create_new_chat():
     chat_history = []
     save_chat_history(chat_history, chat_history_file["_id"], chat_history_file["chat_title"])
     return {"message": "New chat created successfully", "chat_title": chat_history_file["chat_title"]}
+
 
 @app.post("/select_chat_history")
 async def select_chat_history(chat_history_id: str):
@@ -104,6 +110,7 @@ async def handle_get_response(user_query: Query):
     save_chat_history(response.get("chat_history", chat_history["chat_history"]), chat_history_file,
                       chat_history["chat_title"])
     return response
+
 
 @app.delete("/delete_chat_history/{chat_history_id}")
 async def delete_chat_history_endpoint(chat_history_id: str):

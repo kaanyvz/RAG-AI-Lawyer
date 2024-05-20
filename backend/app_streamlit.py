@@ -63,18 +63,23 @@ def save_chat_history(chat_history, chat_history_id, chat_title):
                               {"$set": {"chat_history": chat_history, "chat_title": chat_title}}, upsert=True)
 
 
-def get_chat_history_files(openai_api_key: str):
+def get_chat_history_files(openai_api_key: str) -> list[dict]:
     """
-    This function is responsible for getting the chat history files.
-    It takes in the OpenAI API key as input and returns the chat history files associated with that key.
+    //todo - separate {"id": doc["_id"], "title": doc["chat_title"]} to another object.
+    This function is responsible for getting the chat history files specific to a user's OpenAI API key.
+    :param openai_api_key: The user's OpenAI API key
+    :return: A list of chat history files associated with the user's API key
     """
     if not validate_openai_api_key(openai_api_key):
-        raise HTTPException(status_code=400, detail="Invalid OpenAI API key")
+        raise HTTPException(status_code=401, detail="Invalid OpenAI API key")
+
     db = get_db()
     chat_histories = db["chat_histories"]
-    chat_history_ids = [doc["_id"] for doc in chat_histories.find() if
-                        doc["_id"].startswith(f"chat_history_{openai_api_key}")]
-    return chat_history_ids
+    chat_history_files = [
+        {"id": doc["_id"], "title": doc["chat_title"]}
+        for doc in chat_histories.find({"_id": {"$regex": f"chat_history_{openai_api_key}.*"}})
+    ]
+    return chat_history_files
 
 
 def delete_chat_history(chat_history_id: str):
@@ -151,60 +156,3 @@ def get_response(user_query: str, chat_history: list, pinecone_index_number: str
         return {"answer": "An error occurred while processing your request. Please try again later.", "sources": None,
                 "chat_history": chat_history}
 
-
-st.title("Conversational AI")
-
-openai_api_key_input = st.text_input("Enter your OpenAI API key:")
-
-if openai_api_key_input:
-    openai_api_key = openai_api_key_input
-    pinecone_index_number = st.text_input("Enter the Pinecone index number:")
-    if pinecone_index_number:
-        pinecone_index_name = INDEX_NAME_TEMPLATE.format(pinecone_index_number)
-        chat_history_files = get_chat_history_files(openai_api_key)
-
-        if not chat_history_files:
-            st.write("No chat history found. Create a new chat.")
-        else:
-            st.write("Chat Histories:")
-            for i, chat_history_file in enumerate(chat_history_files):
-                st.write(f"Chat History {i + 1}: {chat_history_file}")
-
-        if st.button("Create New Chat"):
-            chat_history_file = generate_chat_history_file(openai_api_key)
-            chat_history_files.append(chat_history_file)
-            chat_history = []
-            save_chat_history(chat_history, chat_history_file)
-            st.write("New chat created successfully!")
-
-        if chat_history_files:
-            selected_chat_history = st.selectbox("Select a chat history:", chat_history_files)
-
-            if selected_chat_history:
-                chat_history_file = selected_chat_history
-                chat_history = load_chat_history(chat_history_file)
-
-                user_query = st.text_area("Enter your question here:")
-
-                if st.button("Get Response"):
-                    response = get_response(user_query, chat_history)
-                    st.write("Answer:", response['result'].get("answer", "No answer found."))
-                    sources = response['result'].get("sources")
-                    if sources:
-                        st.write("Source:", os.path.basename(sources))
-                    else:
-                        st.write("No specific source cited.")
-
-                    st.write("Chat History:")
-                    for i, (question, answer) in enumerate(response['chat_history']):
-                        st.write(f"Turn {i + 1}:")
-                        st.write(f"Q: {question}")
-                        st.write(f"A: {answer}")
-                        st.write("---")
-
-                    # Save updated chat history
-                    save_chat_history(response['chat_history'], chat_history_file)
-    else:
-        st.error("Please enter a Pinecone index number.")
-else:
-    st.error("Please enter an OpenAI API key.")

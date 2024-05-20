@@ -4,10 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const newChatButton = document.getElementById("new-chat-btn");
     const userQuestionInput = document.getElementById("user-question");
     const getResponseButton = document.getElementById("get-response-btn");
-    // const chatHistoryDropdown = document.getElementById("chat-history-dropdown");
     const chatConversation = document.getElementById('chat-conversation');
     const pineconeIndexDropdown = document.getElementById("pinecone-index-dropdown");
-    const spinner = document.getElementById("spinner");
 
 
     let openaiApiKey = null;
@@ -20,32 +18,92 @@ document.addEventListener("DOMContentLoaded", function () {
     pineconeIndexDropdown.disabled = true;
     pineconeIndexDropdown.classList.add("blocked");
     const updateChatHistoryButtons = async () => {
-        const response = await fetch("http://localhost:8000/get_chat_history_files");
+        const response = await fetch(
+            `http://localhost:8000/get_chat_history_files?openai_api_key=${openaiApiKey}`);
         const data = await response.json();
 
         const chatHistoryButtonsContainer = document.getElementById("chat-history-buttons");
         chatHistoryButtonsContainer.innerHTML = "";
 
-        data.chat_history_files.forEach((file, index) => {
+        data.chat_history_files.forEach((file) => {
+
             const chatHistoryButton = document.createElement("button");
-            chatHistoryButton.textContent = `Chat History ${index + 1}`;
+            let chatTitle = file.title;
+            if (chatTitle.length > 15){
+                chatTitle = chatTitle.slice(0, 15) + "...";
+            }
+            chatHistoryButton.textContent = chatTitle;
             chatHistoryButton.className = "chat-history-button";
-            chatHistoryButton.value = file;
+            chatHistoryButton.value = file.id;
             chatHistoryButton.addEventListener("click", () => {
-                loadChatHistory(file);
+                const allChatHistoryButtons = document.querySelectorAll(".chat-history-button");
+                allChatHistoryButtons.forEach((button) => {
+                    button.classList.remove("selected-chat-history-button");
+                });
+
+                // Add the selected class to the clicked button
+                chatHistoryButton.classList.add("selected-chat-history-button");
+
+                loadChatHistory(file.id);
             });
+
+            const updateButton = document.createElement("button");
+            const updateImage = document.createElement("img");
+            updateImage.src = "edit.png";
+            updateImage.classList = "update-button-image";
+            updateButton.className = "update-button";
+            updateButton.appendChild(updateImage);
+            updateButton.addEventListener("click", async () => {
+                const newTitle = prompt("Edit this conversation title");
+                if (newTitle) {
+                    const response = await fetch(
+                        `http://localhost:8000/update_chat_title?chat_history_id=${file.id}&chat_title=${newTitle}`, {
+                        method: "POST",
+                    });
+                    const data = await response.json();
+                    console.log(data.message);
+                    updateChatHistoryButtons();
+                }
+            });
+
+            const deleteButton = document.createElement("button");
+            const deleteImage = document.createElement("img");
+            deleteImage.src = "delete.png";
+            deleteImage.classList = "delete-button-image";
+            deleteButton.className = "delete-button";
+            deleteButton.appendChild(deleteImage);
+            deleteButton.addEventListener("click", async () => {
+                const confirmation = confirm("Are you sure you want to delete this conversation?");
+                if(confirmation){
+                    const response = await fetch(
+                    `http://localhost:8000/delete_chat_history/${file.id}`, {
+                            method: "DELETE",
+                    });
+                    const data = await response.json();
+                    console.log(data.message);
+                    updateChatHistoryButtons();
+                }
+
+            });
+
             chatHistoryButtonsContainer.appendChild(chatHistoryButton);
+            chatHistoryButtonsContainer.appendChild(updateButton);
+            chatHistoryButtonsContainer.appendChild(deleteButton);
         });
     };
 
     // Function to load chat history into main content
     const loadChatHistory = async (file) => {
+        const loadingMessage = document.getElementById("loading-message");
+        const chatConversation = document.getElementById('chat-conversation');
+
+        loadingMessage.style.display = "block"; // Show loading message
+        chatConversation.style.display = "none"; // Hide chat conversation
+
         const response = await fetch(`http://localhost:8000/select_chat_history?chat_history_id=${file}`, {
             method: "POST",
         });
         const data = await response.json();
-        console.log(data); // Add this line to check the data received
-        console.log(data.message);
 
         // Clear existing chat conversation
         chatConversation.innerHTML = "";
@@ -62,22 +120,41 @@ document.addEventListener("DOMContentLoaded", function () {
             appendBotMessage(answer);
         });
 
+        loadingMessage.style.display = "none"; // Hide loading message
+        chatConversation.style.display = "block"; // Show chat conversation
+
         return data.chat_history; // Ensure that the function returns the chat history data
     };
     // Function to create new chat history
     const createNewChat = async () => {
+        const newChatText = document.getElementById("new-chat-text");
+        const newChatSpinner = document.getElementById("new-chat-spinner");
+
+        newChatText.style.display = "none";
+        newChatSpinner.style.display = "block";
+
         const response = await fetch("http://localhost:8000/create_new_chat", {
             method: "POST",
         });
         const data = await response.json();
         console.log(data.message);
         updateChatHistoryButtons();
+
+        newChatText.style.display = "block";
+        newChatSpinner.style.display = "none";
     };
+
 
     // Function to save API key
     const saveApiKey = async () => {
         openaiApiKey = apiKeyInput.value.trim();
         if (openaiApiKey) {
+            const saveText = document.getElementById("save-text");
+            const saveSpinner = document.getElementById("save-spinner");
+
+            // Hide the save text and show the spinner
+            saveText.style.display = "none";
+            saveSpinner.style.display = "block";
             const response = await fetch("http://localhost:8000/set_api_key", {
                 method: "POST",
                 headers: {
@@ -96,6 +173,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }else{
                 alert("Error: Invalid OpenAI API Key.");
             }
+             // Hide the spinner and show the save text
+            saveText.style.display = "block";
+            saveSpinner.style.display = "none";
 
         } else {
             alert("Please enter your API key.");

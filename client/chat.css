@@ -285,7 +285,9 @@ nav p {
 
 .new-chat {
     cursor: pointer;
-    hover: #4CAF50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .new-chat:hover {
@@ -295,6 +297,9 @@ nav p {
 
 .save-key-btn {
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .save-key-btn:hover {
@@ -351,6 +356,13 @@ nav p {
     margin-bottom: 10px;
 }
 
+.update-title-button {
+    color: white;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
 .bot-response {
     background-color: rgba(0, 123, 255, 0.1); /* Change this to a different color */
     color: #ffffff; /* Change text color if needed */
@@ -360,7 +372,39 @@ nav p {
     margin-bottom: 10px;
 }
 
+.update-button-image {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+}
 
+.delete-button-image {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+}
+
+.delete-button {
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.update-button {
+    cursor: pointer;
+}
+
+.update-button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.selected-chat-history-button {
+    background-color: #046946; /* Change this to the color you want */
+}
 
 .blocked {
   cursor: not-allowed;
@@ -370,7 +414,6 @@ nav p {
 }
 
 .blocked::before {
-  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -382,7 +425,6 @@ nav p {
 }
 
 .blocked::after {
-  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
