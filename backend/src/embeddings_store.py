@@ -45,7 +45,8 @@ class EmbeddingsStore:
             _logger.info(f"Index {self.index_name} already exists in Pinecone.")
 
     @timed
-    def upsert_documents(self, data: List[Document], embeddings: List[List[float]], batch_size: int = 100) -> None:
+    def upsert_documents(self, data: List[Document], embeddings: List[List[float]], batch_size: int = 100,
+                         namespace: str = "default") -> None:
         _logger.info(f"Upserting {len(data)} documents into index: {self.index_name}")
 
         index = self.pc.Index(self.index_name)
@@ -57,7 +58,7 @@ class EmbeddingsStore:
         for i in tqdm(range(0, len(data), batch_size)):
             batch_data = data[i: i + batch_size]
             batch_embeddings = embeddings[i: i + batch_size]
-            self._upsert_batch(index=index, data=batch_data, embeddings=batch_embeddings)
+            self._upsert_batch(index=index, data=batch_data, embeddings=batch_embeddings, namespace=namespace)
             expected_vectors += len(batch_data)
 
             while index.describe_index_stats()["total_vector_count"] < expected_vectors:
@@ -68,11 +69,10 @@ class EmbeddingsStore:
         _logger.info(f"A total of {len(data)} documents upserted into Pinecone index.\n{index.describe_index_stats()}")
 
     @retry(tries=10, delay=5, logger=_logger)
-    def _upsert_batch(self, index: Index, data: List[Document], embeddings: List[List[float]]) -> None:
-
+    def _upsert_batch(self, index: Index, data: List[Document], embeddings: List[List[float]], namespace: str) -> None:
         vectors_to_upsert = self._prepare_vectors_for_upsert(data, embeddings)
         try:
-            index.upsert(vectors=vectors_to_upsert)
+            index.upsert(vectors=vectors_to_upsert, namespace=namespace)
         except Exception as e:
             raise Exception(f"Failed to upsert vectors into Pinecone index: {e}")
 

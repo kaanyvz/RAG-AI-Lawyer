@@ -34,6 +34,7 @@ class ChatHistory(BaseModel):
 
 openai_api_key = None
 pinecone_index_number = None
+namespaceStr = None
 chat_history_files = []
 
 
@@ -51,14 +52,16 @@ async def set_api_key(user: User):
 
 
 @app.post("/set_pinecone_index")
-async def set_pinecone_index_number(index_number: int):
+async def set_pinecone_index_number(index_number: int, namespace: str):
     """
     This endpoint is responsible for setting the Pinecone index number dynamically.
     It takes in the Pinecone index number as a query parameter.
     """
     global pinecone_index_number
+    global namespaceStr
     pinecone_index_number = index_number
-    return {"message": "Pinecone index number set successfully"}
+    namespaceStr = namespace
+    return {"message": f"Pinecone index number set to {pinecone_index_number} and namespace set to {namespaceStr}"}
 
 
 @app.get("/get_chat_history_files")
@@ -106,9 +109,11 @@ async def handle_get_response(user_query: Query):
     """
     global chat_history_file
     chat_history = load_chat_history(chat_history_file)
-    response = get_response(user_query.question, chat_history["chat_history"], pinecone_index_number)
+    response = get_response(user_query.question, chat_history["chat_history"], pinecone_index_number, namespaceStr)
     save_chat_history(response.get("chat_history", chat_history["chat_history"]), chat_history_file,
                       chat_history["chat_title"])
+    print("Pinecone index number: ", pinecone_index_number)
+    print("Namespace: ", namespaceStr)
     return response
 
 

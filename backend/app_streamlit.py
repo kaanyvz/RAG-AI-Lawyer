@@ -19,7 +19,7 @@ load_dotenv()
 
 INDEX_NAME_TEMPLATE = "langchain-doc-index-{}"
 PROMPT_TEMPLATE = """
-Question:
+Soru: Sahip olduğun dökümana göre, 
 """
 NUM_RETRIEVED_DOCS = 5
 TEMPERATURE = 0.3
@@ -29,13 +29,14 @@ CHAT_HISTORY_FILE_TEMPLATE = "chat_history_{}_{}.json"
 
 openai_api_key = None
 pinecone_index_name = None
+namespace = None
 chat_history_files = []
 
 
 def get_db():
-    uri = "mongodb+srv://kaanyvvz:64NjqO7nf55YYW9d@ragai.oaiqvgh.mongodb.net/?retryWrites=true&w=majority&appName=RAGAI"
+    uri = "ENTER YOUR MONGODB URI HERE"
     client = MongoClient(uri)
-    db = client["RAGAI"]  # replace with your database name
+    db = client["CLIENT"]  # replace with your database name
     return db
 
 
@@ -65,7 +66,6 @@ def save_chat_history(chat_history, chat_history_id, chat_title):
 
 def get_chat_history_files(openai_api_key: str) -> list[dict]:
     """
-    //todo - separate {"id": doc["_id"], "title": doc["chat_title"]} to another object.
     This function is responsible for getting the chat history files specific to a user's OpenAI API key.
     :param openai_api_key: The user's OpenAI API key
     :return: A list of chat history files associated with the user's API key
@@ -110,7 +110,7 @@ def validate_openai_api_key(openai_api_key: str) -> bool:
     return response.status_code == 200
 
 
-def get_response(user_query: str, chat_history: list, pinecone_index_number: str) -> Dict[str, Optional[str]]:
+def get_response(user_query: str, chat_history: list, pinecone_index_number: str, namespace_str: str) -> Dict[str, Optional[str]]:
     """
     This function is responsible for getting the response from the AI model.
     It takes in the user's query, the chat history, and the Pinecone index number as input.
@@ -138,8 +138,9 @@ def get_response(user_query: str, chat_history: list, pinecone_index_number: str
         conversation_memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
         vectorstore = LangChainPinecone(index=index, embedding=embedding_model, text_key="context")
-        llm = OpenAI(temperature=TEMPERATURE, openai_api_key=openai_api_key)
-        retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": NUM_RETRIEVED_DOCS})
+        llm = OpenAI(temperature=TEMPERATURE, openai_api_key=openai_api_key, max_tokens=1024)
+        retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": NUM_RETRIEVED_DOCS,
+                                                                                      "namespace": namespace_str})
 
         qa_chain = ConversationalRetrievalChain.from_llm(llm=llm,
                                                          retriever=retriever,
