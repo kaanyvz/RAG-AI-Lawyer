@@ -12,11 +12,11 @@ _logger = get_logger(__name__)
 def main() -> None:
     settings = Configurations()
 
-    filenames = ["CivilCode.pdf"]
-    chunk_size = 1000
-    chunk_overlap = 200
+    filenames = ["bosanma.pdf"]
+    chunk_size = 200
+    chunk_overlap = 0
 
-    index_name = "langchain-doc-index-5"
+    index_name = "langchain-doc-index-1"
     embedding_model = "text-embedding-3-large"
     embedding_dimension = 3072
     metric = "cosine"
@@ -37,7 +37,7 @@ def main() -> None:
             api_key=settings.pinecone__api_key, index_name=index_name, dimension=embedding_dimension,
             metric=metric
         )
-        vector_store.upsert_documents(data=documents, embeddings=embeddings, batch_size=batch_size)
+        vector_store.upsert_documents(data=documents, embeddings=embeddings, batch_size=batch_size, namespace="bosanma")
         time.sleep(60)
 
 

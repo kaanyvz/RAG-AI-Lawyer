@@ -190,6 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to append a bot message to the chat conversation
     function appendBotMessage(message) {
+        message = message.replace(/\n/g, "<br>");
         const botMessage = bot_template.replace("{{MSG}}", message);
         chatConversation.insertAdjacentHTML("beforeend", botMessage);
     }
@@ -205,6 +206,13 @@ document.addEventListener("DOMContentLoaded", function () {
     getResponseButton.addEventListener("click", async () => {
         const question = userQuestionInput.value.trim();
         if (question) {
+            const getResponseText = document.getElementById("get-response-text");
+            const getResponseSpinner = document.getElementById("get-response-spinner");
+
+            // Hide the get response text and show the spinner
+            getResponseText.style.display = "none";
+            getResponseSpinner.style.display = "block";
+
             const response = await fetch("http://localhost:8000/get_response", {
                 method: "POST",
                 headers: {
@@ -216,6 +224,9 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(data);
             appendToChatConversation(question, data.result.answer);
             updateUI(data);
+             // Show the get response text and hide the spinner
+            getResponseText.style.display = "block";
+            getResponseSpinner.style.display = "none";
         } else {
             alert("Please enter a question.");
         }
@@ -235,13 +246,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
     pineconeIndexDropdown.addEventListener("change", function () {
         const selectedPineconeIndex = this.value;
+        const selectedOption = this.options[this.selectedIndex].text;
+        let namespace;
+        switch (selectedOption) {
+            case "Boşanma Dilekçesi":
+                namespace = "bosanma";
+                break;
+            case "Borçlar Hukuku":
+                namespace = "borc";
+                break;
+            case "Ceza Kanunu":
+                namespace = "tck";
+                break;
+            case "Kira Sözleşmesi":
+                namespace = "kira";
+                break;
+            case "Ceza Hukuku":
+                namespace = "cezahukuku";
+                break;
+            case "Anayasa Hukuku":
+                namespace = "ayh";
+                break;
+            case "Ticaret Hukuku":
+                namespace = "ticaret";
+                break;
+            case "Şirketler Hukuku":
+                namespace = "sirketler";
+                break;
+            default:
+                namespace = "";
+        }
         if (selectedPineconeIndex) {
-            setPineconeIndex(selectedPineconeIndex);
+            setPineconeIndex(selectedPineconeIndex, namespace);
         }
     });
 
-    const setPineconeIndex = async (indexNumber) => {
-        const response = await fetch(`http://localhost:8000/set_pinecone_index?index_number=${indexNumber}`, {
+    const setPineconeIndex = async (indexNumber, namespace) => {
+        const response = await fetch(`http://localhost:8000/set_pinecone_index?index_number=${indexNumber}&namespace=${namespace}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
