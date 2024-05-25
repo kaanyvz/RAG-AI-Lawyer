@@ -1,6 +1,4 @@
 import uuid
-import os
-import json
 from dotenv import load_dotenv
 import time
 from typing import Dict, Optional
@@ -34,9 +32,9 @@ chat_history_files = []
 
 
 def get_db():
-    uri = "ENTER YOUR MONGODB URI HERE"
+    uri = "mongodb+srv://kaanyvvz:64NjqO7nf55YYW9d@ragai.oaiqvgh.mongodb.net/?retryWrites=true&w=majority&appName=RAGAI"
     client = MongoClient(uri)
-    db = client["CLIENT"]  # replace with your database name
+    db = client["RAGAI"]  # replace with your database name
     return db
 
 

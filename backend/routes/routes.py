@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, '../')
+
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
@@ -8,6 +11,7 @@ from backend.app_streamlit import (get_response,
                                    get_chat_history_files,
                                    delete_chat_history,
                                    get_db)
+
 
 app = FastAPI()
 

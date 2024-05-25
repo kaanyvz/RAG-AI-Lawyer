@@ -12,11 +12,11 @@ _logger = get_logger(__name__)
 def main() -> None:
     settings = Configurations()
 
-    filenames = ["bosanma.pdf"]
+    filenames = ["kira.pdf"]
     chunk_size = 200
     chunk_overlap = 0
 
-    index_name = "langchain-doc-index-1"
+    index_name = "langchain-doc-index-4"
     embedding_model = "text-embedding-3-large"
     embedding_dimension = 3072
     metric = "cosine"
@@ -37,7 +37,10 @@ def main() -> None:
             api_key=settings.pinecone__api_key, index_name=index_name, dimension=embedding_dimension,
             metric=metric
         )
-        vector_store.upsert_documents(data=documents, embeddings=embeddings, batch_size=batch_size, namespace="bosanma")
+        vector_store.upsert_documents(data=documents,
+                                      embeddings=embeddings,
+                                      batch_size=batch_size,
+                                      namespace="kira")
         time.sleep(60)
 
 
