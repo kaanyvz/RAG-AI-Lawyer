@@ -249,8 +249,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedOption = this.options[this.selectedIndex].text;
         let namespace;
         switch (selectedOption) {
-            case "Boşanma Dilekçesi":
-                namespace = "bosanma";
+            case "Miras Hukuku":
+                namespace = "miras";
+                break;
+            case "Medeni Hukuk":
+                namespace = "medenihukuk";
                 break;
             case "Borçlar Hukuku":
                 namespace = "borc";
@@ -318,7 +321,7 @@ const css = `
 <style>
 .chat-message {
     padding: 1.5rem; 
-    border-radius: 0.5rem; 
+    border-radius: 1.5rem; 
     margin-bottom: 1rem; 
     display: flex;
     align-items: center ;
@@ -343,6 +346,8 @@ const css = `
     width: 80%;
     padding: 0 1.5rem;
     color: #fff;
+    font-size: 12px;
+    font-family: "Poppins", sans-serif;
 }
 </style>
 `;
