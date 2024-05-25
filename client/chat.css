@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
-    color: #fff;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Poppins", sans-serif;
  }
 
 body {
@@ -10,13 +9,6 @@ body {
     padding: 0;
     background-color: rgba(52,53,65,1);
     display: flex;
-}
-
-h1 {
-    font-size: 35px;
-    font-weight: 600;
-    padding: 50px 0;
-    color: #ECECF1;
 }
 
 .side-bar {
@@ -34,14 +26,12 @@ h1 {
     width: 100%;
     height: 100vh;
     flex-direction: column;
-    align-items: center;
     text-align: center;
-    justify-content: space-between;
+    align-items: stretch;  /* Added */
+    justify-content: space-between;  /* Added */
 }
 
 .chat-section {
-    margin-top: 0;
-
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -49,23 +39,11 @@ h1 {
     align-items: center;
 }
 
-.info {
-    color : rgba(255, 255, 255, .5);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 10px;
-}
-.title{
-    margin-bottom: 0;
-    color:   #4CAF50;
-
-    height: max-content;
-}
-
 .title1{
     margin-bottom: 0;
     color:   #4CAF50;
-    font-size: 20px;
+    font-size: 15px;
+    width: 100%;
     height: max-content;
 }
 
@@ -88,12 +66,11 @@ h1 {
 
 
 input {
-    border: none;
     background-color: rgba(255, 255, 255, .1);
-    border-color: rgba(32,33,35,.5);
+    border: none rgba(32, 33, 35, .5);
     width: 100%;
     height: 50px;
-    font-size: 22px;
+    font-size: 14px;
     padding-left: 1rem;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, .05) 0px 54px 55px,
@@ -117,6 +94,7 @@ button {
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
+    color: white
 }
 
 nav {
@@ -125,16 +103,13 @@ nav {
     padding: 5px;
 }
 
-nav p {
-    text-align: center;
+nav a {
+    color: navajowhite;
 }
 
-.chat-history {
-    padding: 10px;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+nav p {
+    text-align: center;
+    color: white;
 }
 
 .chat-history p {
@@ -173,7 +148,7 @@ nav p {
     margin: 10px;
     display: flex;
     flex-direction: column;
-    height: 500px; /* Adjust height as needed */
+    height: 650px; /* Adjust height as needed */
     overflow-y: auto; /* Add scrollbar when content exceeds height */
 }
 .chat-history::-webkit-scrollbar {
@@ -255,11 +230,10 @@ nav p {
 
 .input-section input[type="text"] {
     flex: 1;
-    border: none;
     background-color: rgba(255, 255, 255, .1);
-    border-color: rgba(32,33,35,.5);
+    border: none rgba(32, 33, 35, .5);
     height: 50px;
-    font-size: 22px;
+    font-size: 14px;
     padding-left: 1rem;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, .05) 0px 54px 55px,
@@ -267,6 +241,7 @@ nav p {
                 rgba(0, 0, 0, .05) 0px 4px 6px,
                 rgba(0, 0, 0, .05) 0px 12px 3px,
                 rgba(0, 0, 0, .09) 0px -3px 5px;
+    color: white;
 }
 
 .input-section button {
@@ -315,48 +290,49 @@ nav p {
     background-color: #0e8d10;
 }
 
-
-
-
 /* chat.css */
+.api-key:focus::selection {
+    background: black;
+}
+.button-container {
+    display: flex;
+    align-items: center;
+}
 
 .chat-history-button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 10px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    background-color:  #0e8d10;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
     margin: 10px;
     cursor: pointer;
-    border-radius: 5px;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    text-align: left;
 }
+
+
+@media (max-width: 1000px) {
+    .chat-history-button {
+        background-color:  #0e8d10;
+        color: #ffffff;
+
+        padding: 10px;
+        border-radius: 10px;
+
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 30%;
+        text-align: left;
+    }
+}
+
 
 .chat-history-button:hover {
     background-color: #046946;
-}
-
-.chat-conversation {
-    background-color: rgba(32, 33, 35, 1);
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 10px;
-    max-width: 80%;
-    word-wrap: break-word;
-    overflow-y: auto;
-    max-height: 400px;
-}
-
-.user-question {
-    background-color: rgba(0, 123, 255, 0.1);
-    color: #ffffff;
-    text-align: left;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
 }
 
 .update-title-button {
@@ -366,14 +342,6 @@ nav p {
     cursor: pointer;
 }
 
-.bot-response {
-    background-color: rgba(0, 123, 255, 0.1); /* Change this to a different color */
-    color: #ffffff; /* Change text color if needed */
-    padding: 10px;
-    text-align: left;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
 
 .update-button-image {
     width: 20px;
@@ -437,4 +405,69 @@ nav p {
   background-color: #fff;
   border-radius: 50%;
   border: 2px solid #ccc;
+}
+
+
+
+.header .logo{
+    margin: 2%;
+}
+.header .logo img {
+    height: 7rem;
+    padding-top: 0.5rem;
+}
+
+.header {
+    background-color: #F4F3F0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    margin: 2rem 7%;
+    border-radius: 30rem;
+    box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
+    position: sticky;
+    top: 2rem;
+    z-index: 1000;
+    height: 5rem;
+}
+
+.header .navbar a {
+    margin: 0 1rem;
+    font-size: 1rem;
+    color: var(--black-color);
+    border-bottom: 0.1rem solid transparent;
+}
+.header .navbar #glowing_ensr{
+    padding: 0rem;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(to right, #ff5733, #6f33ff, #33a3ff, #33ff79);
+    background-size: 300% 200%;
+    animation: glowing 3s ease-in-out infinite;
+    border-bottom:0;
+    padding-bottom: 0;
+
+}
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+.header .navbar #glowing_ensr:hover{
+    position: relative;
+    font-size: 1.9em;
+}
+
+/* Aktif (tıklanmış) bağlantılar */
+.navbar a.active,
+.navbar a:hover {
+    border-color: var(--main-color);
+    padding-bottom: 0.5rem;
 }
