@@ -27,8 +27,8 @@ body {
     height: 100vh;
     flex-direction: column;
     text-align: center;
-    align-items: stretch;  /* Added */
-    justify-content: space-between;  /* Added */
+    align-items: stretch;  
+    justify-content: space-between; 
 }
 
 .chat-section {
@@ -50,7 +50,7 @@ body {
 .input-section {
 
     position: relative;
-    /*height: 100vh;*/
+    
     width: 100%;
     max-width: 100rem;
 }
@@ -86,7 +86,7 @@ input:focus {
 
 
 
-/* SIDE BAR STYLES */
+
 
 button {
     border: solid .5px rgba(255, 255, 255, .2);
@@ -148,17 +148,17 @@ nav p {
     margin: 10px;
     display: flex;
     flex-direction: column;
-    height: 650px; /* Adjust height as needed */
-    overflow-y: auto; /* Add scrollbar when content exceeds height */
+    height: 650px; 
+    overflow-y: auto; 
 }
 .chat-history::-webkit-scrollbar {
     display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
+
 .chat-history {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
 }
 
 .chat-history .chat-item {
@@ -207,7 +207,6 @@ nav p {
 }
 
 
-/* Additional styles for dropdown arrow */
 .select-wrapper {
     position: relative;
 }
@@ -222,7 +221,7 @@ nav p {
     color: rgba(255, 255, 255, 0.5);
 }
 
-/* Additional styles for the input section */
+
 .input-section {
     display: flex;
     align-items: center;
@@ -290,7 +289,7 @@ nav p {
     background-color: #0e8d10;
 }
 
-/* chat.css */
+
 .api-key:focus::selection {
     background: black;
 }
@@ -374,7 +373,7 @@ nav p {
 }
 
 .selected-chat-history-button {
-    background-color: #046946; /* Change this to the color you want */
+    background-color: #046946; 
 }
 
 .blocked {
@@ -409,13 +408,6 @@ nav p {
 
 
 
-.header .logo{
-    margin: 2%;
-}
-.header .logo img {
-    height: 7rem;
-    padding-top: 0.5rem;
-}
 
 .header {
     background-color: #F4F3F0;
@@ -423,13 +415,17 @@ nav p {
     align-items: center;
     justify-content: space-between;
     padding: 0 7%;
-    margin: 2rem 7%;
+    margin: 1rem 7%;
     border-radius: 30rem;
     box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
     position: sticky;
     top: 2rem;
     z-index: 1000;
     height: 5rem;
+}
+.header .navbar{
+    margin-right: 1rem;
+    
 }
 
 .header .navbar a {
@@ -460,14 +456,43 @@ nav p {
         background-position: 0 0;
     }
 }
-.header .navbar #glowing_ensr:hover{
-    position: relative;
-    font-size: 1.9em;
-}
 
-/* Aktif (tıklanmış) bağlantılar */
+
+
 .navbar a.active,
 .navbar a:hover {
     border-color: var(--main-color);
     padding-bottom: 0.5rem;
+}
+
+
+.header .navbar a {
+    margin: 0 0.4rem;
+    font-size: 0.9rem;
+    color: var(--black-color);
+    text-decoration: none;
+    border-bottom: 1px solid transparent; 
+     transition: border-bottom 0.2s ease; 
+    
+    
+}
+.navbar a.active,
+.navbar a:hover {
+    border-color: var(--main-color);
+    padding-bottom: 0.1rem;
+}
+
+.header .logo img{
+    height: 5rem;
+}
+
+#glowing_ensr:hover{
+    font-size: 0.9rem;
+}
+
+.navbar a:hover{
+    border-color:#2b2b2e;
+    border-bottom-width: 0.05rem;
+    padding-bottom: 0.1rem  #121212;
+    transition: padding-bottom 0.3s ease;
 }

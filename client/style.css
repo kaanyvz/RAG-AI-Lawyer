@@ -41,12 +41,10 @@ html::-webkit-scrollbar-thumb {
 
 body {
     background: #dcdcdc;
-
 }
 
 section {
     padding: 3.5rem 7%;
-
 }
 
 .btn {
@@ -72,14 +70,15 @@ section {
     text-align: left;
     font-size: 4rem;
     margin-bottom: 2rem;
-    margin-top: 3rem;
+    margin-top: 6rem;
     border-bottom: 0.3rem solid #F4F3F0;
 }
 
 /* header burada başlıyor*/
-.header .logo{
+.header .logo {
     margin: 2%;
 }
+
 .header .logo img {
     height: 7rem;
     padding-top: 0.5rem;
@@ -99,26 +98,29 @@ section {
     z-index: 1000;
     height: 7rem;
 }
-.header .navbar{
+
+.header .navbar {
     margin-right: 10%;
 }
+
 .header .navbar a {
     margin: 0 1rem;
     font-size: 1.6rem;
     color: var(--black-color);
     border-bottom: 0.1rem solid transparent;
 }
-.header .navbar #glowing_ensr{
+
+.header .navbar #glowing_ensr {
     padding: 0rem;
     text-transform: uppercase;
     color: #fff;
     background: linear-gradient(to right, #ff5733, #6f33ff, #33a3ff, #33ff79);
     background-size: 300% 200%;
     animation: glowing 3s ease-in-out infinite;
-    border-bottom:0;
+    border-bottom: 0;
     padding-bottom: 0;
-
 }
+
 @keyframes glowing {
     0% {
         background-position: 0 0;
@@ -130,9 +132,10 @@ section {
         background-position: 0 0;
     }
 }
-.header .navbar #glowing_ensr:hover{
+
+.header .navbar #glowing_ensr:hover {
     position: relative;
-    font-size: 1.9em;
+    font-size: 1.7rem;
 }
 
 /* Aktif (tıklanmış) bağlantılar */
@@ -142,6 +145,7 @@ section {
     padding-bottom: 0.5rem;
 }
 /* header burada bitiyor */
+
 
 /* main burada başlıyor */
 .main {
@@ -343,6 +347,7 @@ section {
 }
 .main_avukatlar .heading{
     color: black;
+    border-bottom: 0.3rem solid #121212;
 }
 
 .main_avukatlar .box_container {
@@ -353,10 +358,11 @@ section {
 }
 
 .main_avukatlar .box_container .box {
-    padding: 1.5rem;
+    padding: 0.2rem;
     margin-bottom: 1.5rem;
     background-color: #F4F3F0;
-    border-radius: 3rem;
+    border-top-left-radius: 10rem;
+    border-top-right-radius: 10rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -385,8 +391,8 @@ section {
 }
 
 .main_avukatlar .box_container .box .içerik {
-    font-size: 1.5rem;
-    padding: 0.5rem 0;
+    font-size: 1.4rem;
+    padding: 2rem 2rem;
     text-align: justify;
 }
 
@@ -409,7 +415,7 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
-    padding-top: 8rem;
+    
 }
 
 .main_review h1{
@@ -731,7 +737,7 @@ section {
 .main_davalar2 .container2 .row2 .left-side2 #baslik{
     font-size: 2.5rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin: 2rem;
     display: none;
     
 }
@@ -743,6 +749,7 @@ section {
     display: none;
     height: 100%;
     width: 100%;
+    max-width: 100rem;
 }
 .main_davalar2 .container2 .row2 .right-side2{
     flex: 20%;
