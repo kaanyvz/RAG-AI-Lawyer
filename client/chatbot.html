@@ -1,102 +1,105 @@
 <!DOCTYPE html>
-<html lang="tr">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Avukatlık Acenta</title>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <!-- header burada başlıyor-->
-    <header class="header">
-        <a href="index.html" class="logo">
-            <img src="images/logo.png" alt="logo">
-        </a>
-        <nav class="navbar">
-            <a href="index.html">ANASAYFA</a>
-            <a href="index.html#hakkimizda" id="hakkimizda">HAKKIMIZDA</a>
-            <a href="index.html#davalarimiz" id="davalarimiz">DAVALARIMIZ</a>
-            <a href="index.html#avukatlarimiz">AVUKATLARIMIZ</a>
-            <a href="index.html#memnuniyet">MEMNUNİYET</a>
-            <a href="index.html#contact">BİZE ULAŞIN</a>
-            <a href="#" id="glowing_ensr">Q.W.E.R</a>
-        </nav>
-
-    </header>
-    <!-- header burada bitiyor-->
-
-    <!-- main burada başlıyor -->
-    <section class="main_forum">
-        <div class="container">
-            <h1 id="gradient-multiline"><span>Yapay Zeka Nedir?</span></h1>
-            <p id="gradient-multiline"><span>Yapay zeka, bilgisayarların insan benzeri düşünme yeteneklerini simüle etmek için kullanılan bir
-                teknolojidir. Bu teknoloji, veri analizi, desen tanıma, öğrenme ve karar verme gibi alanlarda
-                kullanılarak karmaşık problemleri çözmeye yardımcı olur. Yapay zeka, makine öğrenimi ve derin öğrenme
-                gibi alt alanlara sahiptir. Makine öğrenimi, verilerden öğrenme ve gelecekteki davranışları tahmin etme
-                yeteneğine dayanırken, derin öğrenme karmaşık veri kümelerindeki desenleri tanımak için çok katmanlı
-                yapay sinir ağları kullanır. Yapay zeka, otomasyon, sağlık, finans, ulaşım ve birçok diğer sektörde
-                kullanılarak iş süreçlerini optimize etmeye, yeni ürünler ve hizmetler geliştirmeye ve yaşam kalitesini
-                artırmaya yardımcı olur.</span></p>
-        </div>
-        <div class="container_sec">
-            <p id="gradient-multiline"><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, exercitationem voluptatem. Dolorem
-                pariatur eveniet, at rem eius deleniti excepturi, praesentium libero architecto quod esse? Numquam
-                blanditiis provident natus, dicta debitis tenetur beatae? Ipsam tenetur exercitationem recusandae
-                perspiciatis voluptates voluptas, commodi, vel possimus praesentium molestias perferendis!</span></p>
-        </div>
-    </section>
-    <!-- main burada bitiyor -->
-
-    <!-- chatbot_section burada başlıyor -->
-
-    <section class="chatbot_section">
-        <div class="pointer"></div>
-    </section>
-    <!-- chatbot_section burada bitiyor -->
-
-    <!--footer burada başlıyor-->
-    <section class="footer">
-        <div class="footer-logo">
-            <div class="caption">
-                <h4>MALTEPE ÜNİVERSİTESİ HUKUK BÜROSU</h4>
-            </div>
-            <div class="container">
-                <div class="left-side">
-                    <p>Av. Kerem Efe AKSOY</p>
-                    <p>Av. Mehmet KOLUGÜÇLÜ</p>
-                    <p>Av. Ayşe KAYA</p>
-                    <p>Av. Demir DEMİRBÜKEN</p>
-                </div>
-                <div class="right-side">
-                    <div>
-                        <a href="#" class="icon-link fa-solid fa-location-dot" onclick="return false;"></a>
-                        <p> Maltepe</p>
-                    </div>
-                    <div>
-                        <a href="#" class="icon-link fa-solid fa-phone" onclick="return false;"></a>
-                        <p> +(90) 553 218 33 03</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="share">
-            <a href="https://www.facebook.com/" target="_blank" class="fab fa-facebook"></a>
-            <a href="https://twitter.com/" target="_blank" class="fab fa-twitter"></a>
-            <a href="https://www.instagram.com/" target="_blank" class="fab fa-instagram"></a>
-            <a href="https://tr.linkedin.com/" target="_blank" class="fab fa-linkedin"></a>
-        </div>
-        <div class="credit">
-            <p>MAÜ HUKUK BÜROSU | Copyright &copy;2024 designed by <span>us</span>.</p>
-        </div>
-    </section>
-    <!--footer burada bitiyor-->
+    <title>Lawyer AI</title>
+    <link rel="stylesheet" href="chat.css">
     
-</body>
+</head>
+<body>
 
+    <section class="side-bar">
+        <input type="text" id="api-key" placeholder="Enter your API KEY" style="color: white;">
+        <button id="save-key-btn" class="save-key-btn">
+            <span id="save-text">Kaydet</span>
+            <img id="save-spinner"
+                 src="spinner.gif"
+                 alt="Loading..."
+                 style="display: none;"
+                 width="20" height="20"
+            >
+        </button>
+
+        <button id="new-chat-btn" class="new-chat">
+            <span id="new-chat-text">Yeni Sohbet</span>
+            <img id="new-chat-spinner"
+                 src="spinner.gif"
+                 alt="Loading..."
+                 style="display: none;"
+                 width="20" height="20"
+            >
+        </button>
+        <div class="chat-history">
+            <select id="pinecone-index-dropdown">
+                <option value="">Bir Konu Seçin</option>
+                <option value="1">Miras Hukuku</option>
+                <option value="1">Medeni Hukuk</option>
+                <option value="2">Şirketler Hukuku</option>
+                <option value="3">Borçlar Hukuku</option>
+                <option value="4">Ceza Kanunu</option>
+                <option value="4">Kira Sözleşmesi</option>
+                <option value="5">Ceza Hukuku</option>
+                <option value="5">Anayasa Hukuku</option>
+                <option value="5">Ticaret Hukuku</option>
+
+            </select>
+            <div id="chat-history-buttons">
+                <!-- Chat history buttons will be populated dynamically -->
+            </div>
+
+        </div>
+        <nav>
+            <p>Made By <a href="https://github.com/kaanyvz/RAG-AI-Lawyer" target="_blank">Team S.A.U.L</a></p>
+        </nav>
+    </section>
+
+    <div class="main-content">
+        <header class="header">
+            <a href="index.html#main" class="logo">
+                <img src="images/logo.png" alt="logo">
+            </a>
+            <nav class="navbar">
+                <a href="index.html#main" id="active">ANASAYFA</a>
+                <a href="index.html#hakkimizda">HAKKIMIZDA</a>
+                <a href="index.html#davalarimiz">DAVALARIMIZ</a>
+                <a href="index.html#avukatlarimiz">AVUKATLARIMIZ</a>
+                <a href="index.html#memnuniyet">MEMNUNİYET</a>
+                <a href="index.html#contact">BİZE ULAŞIN</a>
+                <a href="#" onclick="window.location.href='chatbot.html'" id="glowing_ensr">ASISTAN</a>
+            </nav>
+        </header>
+        <div class="chat-section">
+            <div class="chat-history" id="chat-history">
+
+                <div id="loading-message" style="display: none;">
+                    <img src="spinner.gif" alt="Loading..." width="80" height="80">
+                </div>
+
+                <!-- Chat history will be populated dynamically -->
+                <div id="chat-conversation">
+                    <!-- Chat conversation will be populated dynamically -->
+                </div>
+
+            </div>
+            <div class="input-section">
+                <input type="text" id="user-question" placeholder="Enter your question">
+                <button id="get-response-btn" class="get-response-btn">
+                    <span id="get-response-text">Sor</span>
+                    <img id="get-response-spinner"
+                         src="spinner.gif"
+                         alt="Loading..."
+                         style="display: none;"
+                         width="20" height="20"
+                    >
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="chat.js"></script>
+</body>
 </html>
